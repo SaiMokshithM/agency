@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 500" fill="none">
+  <defs>
+    <!-- Shading & metallic gradients (same as icon) -->
+    <linearGradient id="gold-dark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#4a3b12"/>
+      <stop offset="35%" stop-color="#735a1a"/>
+      <stop offset="70%" stop-color="#3d2f0d"/>
+      <stop offset="100%" stop-color="#80621d"/>
+    </linearGradient>
+    <linearGradient id="gold-mid" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#b89332"/>
+      <stop offset="50%" stop-color="#e8c45a"/>
+      <stop offset="100%" stop-color="#91701f"/>
+    </linearGradient>
+    <linearGradient id="gold-light" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#e6bf4e"/>
+      <stop offset="25%" stop-color="#fff6d1"/>
+      <stop offset="50%" stop-color="#cfa32c"/>
+      <stop offset="75%" stop-color="#ffe891"/>
+      <stop offset="100%" stop-color="#a68021"/>
+    </linearGradient>
+    <filter id="full-logo-shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#full-logo-shadow)">
+    <!-- ========================================================= -->
+    <!-- 1. ICON MARK ("A") — Scaled and Positioned at Top Center  -->
+    <!-- ========================================================= -->
+    <g transform="translate(50, -10) scale(1.0)">
+      <!-- Left Stem -->
+      <path d="M 245,60 L 165,345 C 152,362 135,365 110,365 L 110,370 L 168,370 L 245,60 Z" fill="url(#gold-dark)" />
+      <path d="M 245,60 L 168,370 L 220,370 C 198,365 188,362 180,345 L 245,60 Z" fill="url(#gold-light)" />
+
+      <!-- Right Stem -->
+      <path d="M 245,60 C 245,60 270,170 305,275 C 335,365 375,370 415,370 C 365,368 330,345 305,275 C 275,190 245,60 245,60 Z" fill="url(#gold-dark)" />
+      <path d="M 245,60 C 245,60 280,180 320,285 C 355,380 405,380 435,370 C 385,370 345,355 315,275 C 280,180 245,60 245,60 Z" fill="url(#gold-light)" />
+
+      <!-- Crossbar Wave -->
+      <path d="M 183,260 C 215,250 250,270 285,305 C 335,355 375,370 435,370 C 375,368 335,345 285,295 C 250,260 215,242 183,260 Z" fill="url(#gold-dark)" />
+      <path d="M 183,260 C 220,240 260,265 295,305 C 345,360 385,370 435,370 C 390,368 350,350 305,295 C 270,255 225,232 183,260 Z" fill="url(#gold-light)" />
+      <path d="M 183,260 C 192,255 210,255 225,270 C 240,285 242,295 240,300 C 230,295 220,285 205,275 C 195,268 188,262 183,260 Z" fill="url(#gold-mid)" />
+    </g>
+
+    <!-- ========================================================= -->
+    <!-- 2. "AVENOIR" WORDMARK — Custom High-End Serif Typo Vector -->
+    <!-- ========================================================= -->
+    <g fill="url(#gold-light)">
+      <!-- A (No crossbar, elegant thin/thick legs with serifs) -->
+      <path d="M 68,390 L 73,390 L 89,428 C 91,432 94,433 97,433 L 97,435 L 75,435 L 75,433 C 78,433 80,432 80,429 L 77,422 L 60,422 L 57,429 C 56,432 58,433 61,433 L 61,435 L 43,435 L 43,433 C 47,433 49,431 51,428 L 68,390 Z 
+               M 61,420 L 76,420 L 68,401 Z" />
+
+      <!-- V (Left leg thick, right leg thin, matching serifs) -->
+      <path d="M 103,390 L 118,390 L 128,425 L 138,390 L 153,390 L 136,431 C 134,435 131,435 128,435 C 125,435 122,435 120,431 L 103,390 Z" />
+
+      <!-- E (Vertical stem thick, horizontal bars thin with serifs) -->
+      <path d="M 162,390 L 195,390 L 195,395 C 191,395 187,394 185,392 L 172,392 L 172,408 L 187,408 L 187,413 L 172,413 L 172,430 L 197,430 C 200,427 202,426 204,426 L 204,435 L 162,435 L 162,390 Z" />
+
+      <!-- N (Left/Right vertical thin, diagonal thick) -->
+      <path d="M 215,390 L 227,390 L 227,392 C 224,392 222,393 222,396 L 222,429 C 222,432 224,433 227,433 L 227,435 L 210,435 L 210,433 C 213,433 215,432 215,429 L 215,394 L 244,435 L 257,435 L 257,396 C 257,393 255,392 252,392 L 252,390 L 268,390 L 268,392 C 265,392 263,393 263,396 L 263,429 L 215,390 Z" />
+
+      <!-- O (High-contrast circular luxury O) -->
+      <path d="M 302,388 C 316,388 327,399 327,413 C 327,427 316,437 302,437 C 288,437 277,427 277,413 C 277,399 288,388 302,388 Z 
+               M 302,390 C 292,390 283,400 283,413 C 283,426 292,435 302,435 C 312,435 321,426 321,413 C 321,400 312,390 302,390 Z" />
+
+      <!-- I (Thick vertical stem, top/bottom serifs) -->
+      <path d="M 338,390 L 354,390 L 354,395 L 349,395 L 349,430 L 354,430 L 354,435 L 338,435 L 338,430 L 343,430 L 343,395 L 338,395 L 338,390 Z" />
+
+      <!-- R (Thick vertical, loop, diagonal leg) -->
+      <path d="M 366,390 L 387,390 C 397,390 404,394 404,403 C 404,411 398,415 390,416 L 403,430 C 405,432 408,433 410,433 L 410,435 L 391,435 L 380,418 L 374,418 L 374,430 C 374,432 376,433 379,433 L 379,435 L 366,435 L 366,390 Z 
+               M 374,395 L 374,413 L 386,413 C 393,413 397,410 397,404 C 397,398 393,395 386,395 Z" />
+    </g>
+
+    <!-- ========================================================= -->
+    <!-- 3. TAGLINE ("CREATIVE AGENCY") WITH DECORATIVE SIDE LINES -->
+    <!-- ========================================================= -->
+    <!-- Left line -->
+    <line x1="88" y1="465" x2="160" y2="465" stroke="url(#gold-mid)" stroke-width="1.2" opacity="0.8" />
+
+    <!-- Tagline text -->
+    <text x="180" y="469" 
+          fill="url(#gold-light)" 
+          font-family="Inter, 'Montserrat', sans-serif" 
+          font-size="10.5" 
+          font-weight="400" 
+          letter-spacing="0.48em" 
+          opacity="0.95">CREATIVE AGENCY</text>
+
+    <!-- Right line -->
+    <line x1="392" y1="465" x2="464" y2="465" stroke="url(#gold-mid)" stroke-width="1.2" opacity="0.8" />
+  </g>
+</svg>

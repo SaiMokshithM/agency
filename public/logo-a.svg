@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" fill="none">
+  <defs>
+    <!-- Dark Gold / Shadows -->
+    <linearGradient id="gold-dark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#4a3b12"/>
+      <stop offset="35%" stop-color="#735a1a"/>
+      <stop offset="70%" stop-color="#3d2f0d"/>
+      <stop offset="100%" stop-color="#80621d"/>
+    </linearGradient>
+
+    <!-- Medium Gold / Base -->
+    <linearGradient id="gold-mid" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#b89332"/>
+      <stop offset="50%" stop-color="#e8c45a"/>
+      <stop offset="100%" stop-color="#91701f"/>
+    </linearGradient>
+
+    <!-- Bright Gold / Highlights -->
+    <linearGradient id="gold-light" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#e6bf4e"/>
+      <stop offset="25%" stop-color="#fff6d1"/>
+      <stop offset="50%" stop-color="#cfa32c"/>
+      <stop offset="75%" stop-color="#ffe891"/>
+      <stop offset="100%" stop-color="#a68021"/>
+    </linearGradient>
+
+    <!-- Soft Drop Shadow for Depth -->
+    <filter id="logo-shadow" x="-10%" y="-10%" width="130%" height="135%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#000000" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#logo-shadow)">
+    <!-- ========================================== -->
+    <!-- LEFT STEM (BEVELED: LEFT SIDE & RIGHT SIDE) -->
+    <!-- ========================================== -->
+    <!-- Left face of left stem (shaded gold) -->
+    <path d="M 245,60 
+             L 165,345 
+             C 152,362 135,365 110,365 
+             L 110,370 
+             L 168,370 
+             L 245,60 Z" 
+          fill="url(#gold-dark)" />
+
+    <!-- Right face of left stem (highlight gold) -->
+    <path d="M 245,60 
+             L 168,370 
+             L 220,370 
+             C 198,365 188,362 180,345 
+             L 245,60 Z" 
+          fill="url(#gold-light)" />
+
+    <!-- ========================================== -->
+    <!-- RIGHT STEM (BEVELED: INNER & OUTER) -->
+    <!-- ========================================== -->
+    <!-- Inner face of right stem (shaded gold) -->
+    <path d="M 245,60 
+             C 245,60 270,170 305,275 
+             C 335,365 375,370 415,370
+             C 365,368 330,345 305,275 
+             C 275,190 245,60 245,60 Z" 
+          fill="url(#gold-dark)" />
+
+    <!-- Outer face of right stem (highlight gold) -->
+    <path d="M 245,60
+             C 245,60 280,180 320,285
+             C 355,380 405,380 435,370
+             C 385,370 345,355 315,275
+             C 280,180 245,60 245,60 Z" 
+          fill="url(#gold-light)" />
+
+    <!-- ========================================== -->
+    <!-- CROSSBAR (ELEGANT WAVE SWOOP) -->
+    <!-- ========================================== -->
+    <!-- Shaded bottom part of the swooping crossbar -->
+    <path d="M 183,260 
+             C 215,250 250,270 285,305 
+             C 335,355 375,370 435,370 
+             C 375,368 335,345 285,295 
+             C 250,260 215,242 183,260 Z" 
+          fill="url(#gold-dark)" />
+
+    <!-- Highlighted top part of the swooping crossbar -->
+    <path d="M 183,260
+             C 220,240 260,265 295,305
+             C 345,360 385,370 435,370
+             C 390,368 350,350 305,295
+             C 270,255 225,232 183,260 Z" 
+          fill="url(#gold-light)" />
+
+    <!-- Inner connector detail -->
+    <path d="M 183,260 
+             C 192,255 210,255 225,270 
+             C 240,285 242,295 240,300
+             C 230,295 220,285 205,275
+             C 195,268 188,262 183,260 Z" 
+          fill="url(#gold-mid)" />
+  </g>
+</svg>
