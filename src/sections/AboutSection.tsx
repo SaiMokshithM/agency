@@ -78,7 +78,7 @@ const AboutSection: React.FC = () => {
       className="about-section"
       aria-labelledby="about-title"
     >
-      {/* ── Background atmosphere ── */}
+      {/* ── Background atmosphere — blue ── */}
       <div className="about-bg" aria-hidden="true">
         <div className="about-bg-glow-left"  />
         <div className="about-bg-glow-right" />
@@ -92,14 +92,14 @@ const AboutSection: React.FC = () => {
         <div className="about-header">
           <ScrollReveal animation="fadeUp">
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: '14px', marginBottom: '1.2rem' }}>
-              <span style={{ width: '32px', height: '1px', background: 'linear-gradient(90deg, #c9a227, rgba(201,162,39,0.3))', flexShrink: 0 }} />
+              <span style={{ width: '28px', height: '1px', background: 'linear-gradient(90deg, #2563EB, rgba(59,130,246,0.3))', flexShrink: 0 }} />
               <span style={{
                 fontFamily: 'Inter, sans-serif',
-                fontSize: '11px',
+                fontSize: '10px',
                 fontWeight: 600,
                 letterSpacing: '0.26em',
                 textTransform: 'uppercase',
-                color: '#c9a227',
+                color: '#60A5FA',
               }}>Studio Thesis</span>
             </div>
           </ScrollReveal>
@@ -113,6 +113,7 @@ const AboutSection: React.FC = () => {
               >
                 We engineer complexity<br className="about-headline-break" />
                 into{' '}
+                {/* Gold gradient — premium keyword emphasis */}
                 <span className="text-gold">pure performance.</span>
               </h2>
             </ScrollReveal>
@@ -153,6 +154,7 @@ const AboutSection: React.FC = () => {
                 <blockquote className="about-quote-text">
                   Complexity is easy. Simplicity is the hardest work of all.
                 </blockquote>
+                {/* Gold cite — prestige brand accent */}
                 <cite className="about-quote-cite">— Avenoir Studio Creed</cite>
               </div>
             </div>

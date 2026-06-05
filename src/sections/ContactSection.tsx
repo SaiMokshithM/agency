@@ -68,11 +68,11 @@ const ContactSection: React.FC = () => {
   /* ── shared styles ── */
   const inputS = (field: keyof ContactFormData): React.CSSProperties => ({
     width: '100%',
-    background: '#0e0e0e',
-    border: `1px solid ${fieldErrors[field] ? 'rgba(220,60,60,.5)' : 'rgba(201,162,39,.13)'}`,
+    background: '#0B1220',
+    border: `1px solid ${fieldErrors[field] ? 'rgba(239,68,68,.5)' : 'rgba(37,99,235,.15)'}`,
     borderRadius: '8px',
     padding: '13px 16px',
-    color: '#ececec',
+    color: '#F9FAFB',
     fontFamily: 'Inter, sans-serif',
     fontSize: '13px',
     outline: 'none',
@@ -84,32 +84,32 @@ const ContactSection: React.FC = () => {
     fontFamily: 'Inter, sans-serif',
     fontSize: '10px', fontWeight: 600,
     letterSpacing: '.12em', textTransform: 'uppercase',
-    color: '#5a5a5a', marginBottom: '8px',
+    color: '#6B7280', marginBottom: '8px',
   }
 
   const errS: React.CSSProperties = {
-    marginTop: 6, color: '#e05555',
+    marginTop: 6, color: '#EF4444',
     fontSize: '11px', fontFamily: 'Inter, sans-serif',
   }
 
   return (
     <section
       id="contact"
-      style={{ position: 'relative', background: '#090909', padding: '88px 0', overflow: 'hidden' }}
+      style={{ position: 'relative', background: '#030712', padding: '88px 0', overflow: 'hidden' }}
       aria-labelledby="contact-h2"
     >
-      {/* divider */}
+      {/* divider — blue */}
       <div style={{
         position: 'absolute', top: 0, left: 0, right: 0, height: 1,
-        background: 'linear-gradient(90deg,transparent,rgba(201,162,39,.14),transparent)',
+        background: 'linear-gradient(90deg,transparent,rgba(37,99,235,.2),transparent)',
       }} aria-hidden="true" />
 
-      {/* bg glows */}
+      {/* bg glows — premium blue */}
       <div style={{
         position: 'absolute', inset: 0, pointerEvents: 'none',
         background:
-          'radial-gradient(ellipse at 8% 30%, rgba(201,162,39,.045) 0%, transparent 55%),' +
-          'radial-gradient(ellipse at 92% 70%, rgba(201,162,39,.035) 0%, transparent 50%)',
+          'radial-gradient(ellipse at 8% 30%, rgba(37,99,235,.06) 0%, transparent 55%),' +
+          'radial-gradient(ellipse at 92% 70%, rgba(59,130,246,.04) 0%, transparent 50%)',
       }} aria-hidden="true" />
 
       <div style={{ maxWidth: 1360, margin: '0 auto', padding: '0 56px', position: 'relative' }}>
@@ -118,8 +118,8 @@ const ContactSection: React.FC = () => {
         <div style={{ marginBottom: '60px', maxWidth: 580 }}>
           <ScrollReveal animation="fadeUp">
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: '14px', marginBottom: '14px' }}>
-              <span style={{ width: '32px', height: '1px', background: 'linear-gradient(90deg, #c9a227, rgba(201,162,39,0.3))', flexShrink: 0 }} />
-              <span className="label" style={{ marginBottom: 0 }}>
+              <span style={{ width: '28px', height: '1px', background: 'linear-gradient(90deg, #2563EB, rgba(59,130,246,0.3))', flexShrink: 0 }} />
+              <span className="label" style={{ marginBottom: 0, color: '#60A5FA' }}>
                 Get In Touch
               </span>
             </div>
@@ -128,11 +128,12 @@ const ContactSection: React.FC = () => {
             <h2 id="contact-h2" style={{
               fontFamily: "'Playfair Display', Georgia, serif",
               fontSize: 'clamp(1.8rem, 3.2vw, 3rem)',
-              fontWeight: 700, color: '#ececec', lineHeight: 1.1, marginBottom: '14px',
+              fontWeight: 700, color: '#F9FAFB', lineHeight: 1.1, marginBottom: '14px',
             }}>
               Let's Build Something{' '}
+              {/* Gold keyword — luxury highlight */}
               <span style={{
-                background: 'linear-gradient(135deg,#c9a227 0%,#e8c45a 50%,#c9a227 100%)',
+                background: 'linear-gradient(135deg,#D4AF37 0%,#F4D03F 50%,#D4AF37 100%)',
                 WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
               }}>
                 Extraordinary
@@ -140,7 +141,7 @@ const ContactSection: React.FC = () => {
             </h2>
           </ScrollReveal>
           <ScrollReveal animation="fadeUp" delay={.1}>
-            <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '13px', color: '#555', lineHeight: 1.75 }}>
+            <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '13px', color: '#9CA3AF', lineHeight: 1.75 }}>
               Tell us about your project. We'll get back to you within one business day.
             </p>
           </ScrollReveal>
@@ -155,11 +156,11 @@ const ContactSection: React.FC = () => {
               <div>
                 <h3 style={{
                   fontFamily: "'Playfair Display', Georgia, serif",
-                  fontSize: '20px', fontWeight: 700, color: '#ececec', marginBottom: '10px',
+                  fontSize: '20px', fontWeight: 700, color: '#F9FAFB', marginBottom: '10px',
                 }}>
                   Get in Touch
                 </h3>
-                <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '13px', color: '#a1a1aa', lineHeight: 1.75 }}>
+                <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '13px', color: '#9CA3AF', lineHeight: 1.75 }}>
                   Whether you have a clear vision or just an idea — we'd love to hear from you.
                 </p>
               </div>
@@ -172,16 +173,16 @@ const ContactSection: React.FC = () => {
                   { Icon: MapPin, label: 'Location',        val: 'Badvel, Andhra Pradesh', href: null },
                 ].map(({ Icon, label, val, href }) => (
                   <div key={label} style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-                    <div className="icon-box" style={{ flexShrink: 0 }} aria-hidden="true">
-                      <Icon size={15} style={{ color: '#c9a227' }} />
+                    <div className="icon-box" style={{ flexShrink: 0, background: 'rgba(37,99,235,0.08)', border: '1px solid rgba(59,130,246,0.15)' }} aria-hidden="true">
+                      <Icon size={15} style={{ color: '#60A5FA' }} />
                     </div>
                     <div>
-                      <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '9px', fontWeight: 600, letterSpacing: '.14em', textTransform: 'uppercase', color: '#8a8a8a', marginBottom: '3px' }}>
+                      <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '9px', fontWeight: 600, letterSpacing: '.14em', textTransform: 'uppercase', color: '#6B7280', marginBottom: '3px' }}>
                         {label}
                       </p>
                       {href
-                        ? <a href={href} style={{ fontFamily: 'Inter, sans-serif', fontSize: '13px', color: '#ececec', textDecoration: 'none' }}>{val}</a>
-                        : <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '13px', color: '#ececec' }}>{val}</p>
+                        ? <a href={href} style={{ fontFamily: 'Inter, sans-serif', fontSize: '13px', color: '#F9FAFB', textDecoration: 'none', transition: 'color 0.2s' }} onMouseEnter={e => e.currentTarget.style.color = '#60A5FA'} onMouseLeave={e => e.currentTarget.style.color = '#F9FAFB'}>{val}</a>
+                        : <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '13px', color: '#F9FAFB' }}>{val}</p>
                       }
                     </div>
                   </div>
@@ -190,13 +191,13 @@ const ContactSection: React.FC = () => {
 
               {/* Expect box */}
               <div style={{
-                background: '#0f0f0f',
-                border: '1px solid rgba(201,162,39,.1)',
+                background: '#0B1220',
+                border: '1px solid rgba(37,99,235,.15)',
                 borderRadius: '12px', padding: '22px 20px',
               }}>
                 <p style={{
                   fontFamily: 'Inter, sans-serif', fontSize: '10px', fontWeight: 700,
-                  letterSpacing: '.12em', textTransform: 'uppercase', color: '#ececec', marginBottom: '16px',
+                  letterSpacing: '.12em', textTransform: 'uppercase', color: '#F9FAFB', marginBottom: '16px',
                 }}>
                   What to Expect:
                 </p>
@@ -206,9 +207,9 @@ const ContactSection: React.FC = () => {
                     'Free discovery consultation',
                     'Transparent project scoping',
                     'No pushy sales tactics',
-                  ].map(item => (
-                    <li key={item} style={{ display: 'flex', alignItems: 'center', gap: '9px', fontFamily: 'Inter, sans-serif', fontSize: '12px', color: '#a1a1aa' }}>
-                      <CheckCircle size={11} style={{ color: '#c9a227', flexShrink: 0 }} />
+                  ].map((item, i) => (
+                    <li key={item} style={{ display: 'flex', alignItems: 'center', gap: '9px', fontFamily: 'Inter, sans-serif', fontSize: '12px', color: '#9CA3AF' }}>
+                      <CheckCircle size={11} style={{ color: i === 0 ? '#D4AF37' : '#3B82F6', flexShrink: 0 }} />
                       {item}
                     </li>
                   ))}
@@ -220,10 +221,10 @@ const ContactSection: React.FC = () => {
           {/* ── RIGHT — Form ── */}
           <ScrollReveal animation="fadeUp" delay={.12} className="lg:col-span-3 w-full">
             <div style={{
-              background: '#0f0f0f',
-              border: '1px solid rgba(201,162,39,.1)',
+              background: '#0B1220',
+              border: '1px solid rgba(37,99,235,.15)',
               borderRadius: '16px', padding: '36px 30px',
-              boxShadow: '0 0 60px rgba(201,162,39,.04)',
+              boxShadow: '0 0 60px rgba(37,99,235,.04)',
             }}>
               <AnimatePresence mode="wait">
                 {status === 'success' ? (
@@ -236,19 +237,19 @@ const ContactSection: React.FC = () => {
                   >
                     <div style={{
                       width: 64, height: 64, borderRadius: '50%',
-                      background: 'rgba(201,162,39,.1)', border: '1px solid rgba(201,162,39,.3)',
-                      boxShadow: '0 0 30px rgba(201,162,39,.18)',
+                      background: 'rgba(37,99,235,.1)', border: '1px solid rgba(37,99,235,.3)',
+                      boxShadow: '0 0 30px rgba(37,99,235,.18)',
                       display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px',
                     }}>
-                      <CheckCircle size={28} style={{ color: '#c9a227' }} />
+                      <CheckCircle size={28} style={{ color: '#3B82F6' }} />
                     </div>
-                    <h3 style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: '24px', color: '#ececec', marginBottom: '10px' }}>
+                    <h3 style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: '24px', color: '#F9FAFB', marginBottom: '10px' }}>
                       Message Sent!
                     </h3>
-                     <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '13px', color: '#a1a1aa', lineHeight: 1.7, maxWidth: '280px', marginBottom: '28px' }}>
+                     <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '13px', color: '#9CA3AF', lineHeight: 1.7, maxWidth: '280px', marginBottom: '28px' }}>
                       Thank you for reaching out. We'll review your project and be in touch within one business day.
                     </p>
-                    <button onClick={() => setStatus('idle')} style={{ fontFamily: 'Inter, sans-serif', fontSize: '12px', color: '#c9a227', background: 'none', border: 'none', cursor: 'pointer' }}>
+                    <button onClick={() => setStatus('idle')} style={{ fontFamily: 'Inter, sans-serif', fontSize: '12px', color: '#60A5FA', background: 'none', border: 'none', cursor: 'pointer' }}>
                       Send another message →
                     </button>
                   </motion.div>
@@ -262,26 +263,30 @@ const ContactSection: React.FC = () => {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4.5 mb-3.5">
                       <div>
                         <label htmlFor="cn" style={labelS}>
-                          Name <span style={{ color: '#c9a227' }}>*</span>
+                          Name <span style={{ color: '#3B82F6' }}>*</span>
                         </label>
                         <input
                           id="cn" type="text" name="name" value={form.name}
                           onChange={handleChange} placeholder="Your full name"
                           style={inputS('name')} disabled={status === 'loading'}
                           aria-required="true" aria-invalid={!!fieldErrors.name}
+                          onFocus={e => { e.currentTarget.style.borderColor = 'rgba(59,130,246,0.6)'; e.currentTarget.style.boxShadow = '0 0 0 3px rgba(37,99,235,0.1)' }}
+                          onBlur={e => { e.currentTarget.style.borderColor = fieldErrors.name ? 'rgba(239,68,68,0.5)' : 'rgba(37,99,235,0.15)'; e.currentTarget.style.boxShadow = 'none' }}
                         />
                         {fieldErrors.name && <p role="alert" style={errS}>{fieldErrors.name}</p>}
                       </div>
 
                       <div>
                         <label htmlFor="ce" style={labelS}>
-                          Email <span style={{ color: '#c9a227' }}>*</span>
+                          Email <span style={{ color: '#3B82F6' }}>*</span>
                         </label>
                         <input
                           id="ce" type="email" name="email" value={form.email}
                           onChange={handleChange} placeholder="you@company.com"
                           style={inputS('email')} disabled={status === 'loading'}
                           aria-required="true" aria-invalid={!!fieldErrors.email}
+                          onFocus={e => { e.currentTarget.style.borderColor = 'rgba(59,130,246,0.6)'; e.currentTarget.style.boxShadow = '0 0 0 3px rgba(37,99,235,0.1)' }}
+                          onBlur={e => { e.currentTarget.style.borderColor = fieldErrors.email ? 'rgba(239,68,68,0.5)' : 'rgba(37,99,235,0.15)'; e.currentTarget.style.boxShadow = 'none' }}
                         />
                         {fieldErrors.email && <p role="alert" style={errS}>{fieldErrors.email}</p>}
                       </div>
@@ -291,7 +296,7 @@ const ContactSection: React.FC = () => {
                     <div style={{ marginBottom: '14px' }}>
                       <label htmlFor="cc" style={labelS}>
                         Company{' '}
-                        <span style={{ fontSize: '9px', color: '#3a3a3a', fontWeight: 400, letterSpacing: 0, textTransform: 'none' }}>
+                        <span style={{ fontSize: '9px', color: '#4B5563', fontWeight: 400, letterSpacing: 0, textTransform: 'none' }}>
                           Optional
                         </span>
                       </label>
@@ -299,13 +304,15 @@ const ContactSection: React.FC = () => {
                         id="cc" type="text" name="company" value={form.company}
                         onChange={handleChange} placeholder="Your company name"
                         style={inputS('company')} disabled={status === 'loading'}
+                        onFocus={e => { e.currentTarget.style.borderColor = 'rgba(59,130,246,0.6)'; e.currentTarget.style.boxShadow = '0 0 0 3px rgba(37,99,235,0.1)' }}
+                        onBlur={e => { e.currentTarget.style.borderColor = 'rgba(37,99,235,0.15)'; e.currentTarget.style.boxShadow = 'none' }}
                       />
                     </div>
 
                     {/* ── Service dropdown ── */}
                     <div style={{ marginBottom: '14px' }}>
                       <label htmlFor="cs" style={labelS}>
-                        I Want to Build <span style={{ color: '#c9a227' }}>*</span>
+                        I Want to Build <span style={{ color: '#3B82F6' }}>*</span>
                       </label>
 
                       {/* Custom select wrapper */}
@@ -327,23 +334,14 @@ const ContactSection: React.FC = () => {
                           aria-invalid={!!fieldErrors.service}
                           autoComplete="off"
                           style={{
-                            width: '100%',
-                            background: '#0e0e0e',
-                            border: `1px solid ${
-                              fieldErrors.service
-                                ? 'rgba(220,60,60,.5)'
-                                : selectFocus || dropdownOpen
-                                  ? 'rgba(201,162,39,.45)'
-                                  : 'rgba(201,162,39,.13)'
-                            }`,
-                            borderRadius: '8px',
+                            ...inputS('service'),
                             padding: '13px 44px 13px 16px',
-                            color: '#ececec',
-                            fontFamily: 'Inter, sans-serif',
-                            fontSize: '13px',
-                            outline: 'none',
-                            transition: 'border-color .2s, box-shadow .2s',
-                            boxShadow: selectFocus || dropdownOpen ? '0 0 0 3px rgba(201,162,39,.07)' : 'none',
+                            borderColor: fieldErrors.service
+                              ? 'rgba(239,68,68,.5)'
+                              : selectFocus || dropdownOpen
+                                ? 'rgba(59,130,246,.6)'
+                                : 'rgba(37,99,235,.15)',
+                            boxShadow: selectFocus || dropdownOpen ? '0 0 0 3px rgba(37,99,235,.1)' : 'none',
                           }}
                         />
 
@@ -364,7 +362,7 @@ const ContactSection: React.FC = () => {
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
-                            color: '#c9a227',
+                            color: '#60A5FA',
                             outline: 'none',
                           }}
                           aria-label="Toggle services options"
@@ -392,8 +390,8 @@ const ContactSection: React.FC = () => {
                                 left: 0,
                                 right: 0,
                                 zIndex: 10,
-                                background: '#0e0e0e',
-                                border: '1px solid rgba(201,162,39,.2)',
+                                background: '#0B1220',
+                                border: '1px solid rgba(37,99,235,.2)',
                                 borderRadius: '8px',
                                 boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5)',
                                 overflow: 'hidden',
@@ -417,7 +415,7 @@ const ContactSection: React.FC = () => {
                                         background: 'none',
                                         border: 'none',
                                         padding: '12px 16px',
-                                        color: '#ececec',
+                                        color: '#F9FAFB',
                                         fontFamily: 'Inter, sans-serif',
                                         fontSize: '13px',
                                         cursor: 'pointer',
@@ -425,12 +423,12 @@ const ContactSection: React.FC = () => {
                                         outline: 'none',
                                       }}
                                       onMouseEnter={(e) => {
-                                        e.currentTarget.style.background = 'rgba(201,162,39,.08)'
-                                        e.currentTarget.style.color = '#c9a227'
+                                        e.currentTarget.style.background = 'rgba(37,99,235,.1)'
+                                        e.currentTarget.style.color = '#60A5FA'
                                       }}
                                       onMouseLeave={(e) => {
                                         e.currentTarget.style.background = 'none'
-                                        e.currentTarget.style.color = '#ececec'
+                                        e.currentTarget.style.color = '#F9FAFB'
                                       }}
                                     >
                                       {o.label}
@@ -451,7 +449,7 @@ const ContactSection: React.FC = () => {
                     {/* ── Project details ── */}
                     <div style={{ marginBottom: '24px' }}>
                       <label htmlFor="cpd" style={labelS}>
-                        Project Details <span style={{ color: '#c9a227' }}>*</span>
+                        Project Details <span style={{ color: '#3B82F6' }}>*</span>
                       </label>
                       <textarea
                         id="cpd" name="project_details" value={form.project_details}
@@ -460,6 +458,8 @@ const ContactSection: React.FC = () => {
                         style={{ ...inputS('project_details'), resize: 'none' }}
                         disabled={status === 'loading'}
                         aria-required="true" aria-invalid={!!fieldErrors.project_details}
+                        onFocus={e => { e.currentTarget.style.borderColor = 'rgba(59,130,246,0.6)'; e.currentTarget.style.boxShadow = '0 0 0 3px rgba(37,99,235,0.1)' }}
+                        onBlur={e => { e.currentTarget.style.borderColor = fieldErrors.project_details ? 'rgba(239,68,68,0.5)' : 'rgba(37,99,235,0.15)'; e.currentTarget.style.boxShadow = 'none' }}
                       />
                       {fieldErrors.project_details && (
                         <p role="alert" style={errS}>{fieldErrors.project_details}</p>
@@ -473,13 +473,13 @@ const ContactSection: React.FC = () => {
                         style={{
                           display: 'flex', alignItems: 'center', gap: '10px',
                           padding: '12px 14px', borderRadius: '8px',
-                          background: 'rgba(220,60,60,.08)', border: '1px solid rgba(220,60,60,.2)',
+                          background: 'rgba(239,68,68,.08)', border: '1px solid rgba(239,68,68,.2)',
                           marginBottom: '18px',
                         }}
                         role="alert" aria-live="assertive"
                       >
-                        <AlertCircle size={14} style={{ color: '#e05555', flexShrink: 0 }} />
-                        <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '12px', color: '#e05555' }}>{errorMsg}</p>
+                        <AlertCircle size={14} style={{ color: '#EF4444', flexShrink: 0 }} />
+                        <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '12px', color: '#EF4444' }}>{errorMsg}</p>
                       </motion.div>
                     )}
 
@@ -506,7 +506,7 @@ const ContactSection: React.FC = () => {
 
                     <p style={{
                       marginTop: '12px', textAlign: 'center',
-                      fontFamily: 'Inter, sans-serif', fontSize: '11px', color: '#333',
+                      fontFamily: 'Inter, sans-serif', fontSize: '11px', color: '#4B5563',
                     }}>
                       Your information is secure and will never be shared.
                     </p>

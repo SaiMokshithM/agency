@@ -4,30 +4,41 @@ import { Bot, Code2, Layers, Zap, ArrowRight } from 'lucide-react'
 import ScrollReveal from '@/components/ScrollReveal'
 
 /* ── Marquee ── */
-const MARQUEE_ITEMS = ['Web Development', 'AI Automation', 'SaaS Platforms', 'Product Design', 'API Integration', 'Performance Optimisation']
+const MARQUEE_ITEMS = ['AI Development', 'Enterprise Software', 'SaaS Platforms', 'Product Design', 'API Integration', 'Intelligent Automation']
 const MarqueeStrip: React.FC = () => {
   const items = [...MARQUEE_ITEMS, ...MARQUEE_ITEMS, ...MARQUEE_ITEMS]
   return (
     <div
-      className="relative overflow-hidden border-y border-[rgba(201,162,39,.07)]"
-      style={{ background: '#090909', padding: '14px 0' }}
+      className="relative overflow-hidden"
+      style={{
+        background: '#0B1220',
+        padding: '14px 0',
+        borderTop: '1px solid rgba(37,99,235,0.08)',
+        borderBottom: '1px solid rgba(37,99,235,0.08)',
+      }}
       aria-hidden="true"
     >
       {/* edge fades */}
-      <div style={{ position: 'absolute', inset: '0 auto 0 0', width: 80, background: 'linear-gradient(90deg,#090909,transparent)', zIndex: 1, pointerEvents: 'none' }} />
-      <div style={{ position: 'absolute', inset: '0 0 0 auto', width: 80, background: 'linear-gradient(270deg,#090909,transparent)', zIndex: 1, pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', inset: '0 auto 0 0', width: 80, background: 'linear-gradient(90deg,#0B1220,transparent)', zIndex: 1, pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', inset: '0 0 0 auto', width: 80, background: 'linear-gradient(270deg,#0B1220,transparent)', zIndex: 1, pointerEvents: 'none' }} />
 
       <div className="flex items-center whitespace-nowrap marquee-track" style={{ width: 'max-content' }}>
         {items.map((item, i) => (
           <span key={i} style={{ display: 'inline-flex', alignItems: 'center', gap: 0 }}>
             <span style={{
               fontFamily: 'Inter, sans-serif', fontSize: '10px', fontWeight: 600,
-              letterSpacing: '.24em', textTransform: 'uppercase', color: '#3a3a3a',
+              letterSpacing: '.22em', textTransform: 'uppercase', color: '#1F2D4A',
               padding: '0 32px',
             }}>
               {item}
             </span>
-            <span style={{ width: 4, height: 4, borderRadius: '50%', background: '#c9a227', opacity: .45, flexShrink: 0 }} />
+            {/* Alternating blue and gold dots */}
+            <span style={{
+              width: 4, height: 4, borderRadius: '50%',
+              background: i % 3 === 1 ? '#D4AF37' : '#2563EB',
+              opacity: i % 3 === 1 ? 0.55 : 0.5,
+              flexShrink: 0,
+            }} />
           </span>
         ))}
       </div>
@@ -35,14 +46,40 @@ const MarqueeStrip: React.FC = () => {
   )
 }
 
-
-
 /* ── Service card data ── */
 const services = [
-  { id:'ai',      icon: Bot,   title: 'AI Development',    desc: 'Custom AI solutions, LLM integrations and intelligent automation systems.' },
-  { id:'web',     icon: Code2, title: 'Web Development',   desc: 'High-performance websites and web applications built with modern technologies.' },
-  { id:'saas',    icon: Layers,title: 'SaaS Development',  desc: 'Scalable SaaS platforms that are secure, reliable and built for growth.' },
-  { id:'auto',    icon: Zap,   title: 'Automation Systems',desc: 'Workflow automation, API integrations and custom business solutions.' },
+  {
+    id: 'ai',
+    icon: Bot,
+    title: 'AI Development',
+    desc: 'Custom LLM integrations, intelligent automation, and AI-native systems built for enterprise scale.',
+    badge: 'Most Popular',
+    badgeGold: true,
+  },
+  {
+    id: 'web',
+    icon: Code2,
+    title: 'Web Development',
+    desc: 'High-performance websites and web applications engineered with modern, cutting-edge technologies.',
+    badge: null,
+    badgeGold: false,
+  },
+  {
+    id: 'saas',
+    icon: Layers,
+    title: 'SaaS Development',
+    desc: 'Scalable SaaS platforms architected for security, reliability, and sustained business growth.',
+    badge: null,
+    badgeGold: false,
+  },
+  {
+    id: 'auto',
+    icon: Zap,
+    title: 'Automation Systems',
+    desc: 'Workflow automation, API integrations, and intelligent business process solutions.',
+    badge: null,
+    badgeGold: false,
+  },
 ]
 
 const ServicesSection: React.FC = () => {
@@ -55,13 +92,18 @@ const ServicesSection: React.FC = () => {
 
       <section
         id="services"
-        style={{ position: 'relative', background: '#090909', padding: '88px 0', overflow: 'hidden' }}
+        style={{ position: 'relative', background: '#030712', padding: '88px 0', overflow: 'hidden' }}
         aria-labelledby="services-h2"
       >
-        {/* bg glow */}
+        {/* bg glow — blue */}
         <div style={{
-          position: 'absolute', top: 0, right: 0, width: 420, height: 420,
-          background: 'radial-gradient(ellipse, rgba(201,162,39,.04) 0%, transparent 65%)',
+          position: 'absolute', top: 0, right: 0, width: 500, height: 500,
+          background: 'radial-gradient(ellipse, rgba(37,99,235,0.05) 0%, transparent 65%)',
+          filter: 'blur(80px)', pointerEvents: 'none',
+        }} aria-hidden="true" />
+        <div style={{
+          position: 'absolute', bottom: 0, left: 0, width: 350, height: 350,
+          background: 'radial-gradient(ellipse, rgba(37,99,235,0.03) 0%, transparent 65%)',
           filter: 'blur(80px)', pointerEvents: 'none',
         }} aria-hidden="true" />
 
@@ -71,15 +113,15 @@ const ServicesSection: React.FC = () => {
             <div>
               <ScrollReveal animation="fadeUp">
                 <div style={{ display: 'inline-flex', alignItems: 'center', gap: '14px', marginBottom: '14px' }}>
-                  <span style={{ width: '32px', height: '1px', background: 'linear-gradient(90deg, #c9a227, rgba(201,162,39,0.3))', flexShrink: 0 }} />
+                  <span style={{ width: '28px', height: '1px', background: 'linear-gradient(90deg, #2563EB, rgba(59,130,246,0.3))', flexShrink: 0 }} />
                   <span style={{
                     fontFamily: 'Inter, sans-serif',
-                    fontSize: '11px',
+                    fontSize: '10px',
                     fontWeight: 600,
                     letterSpacing: '0.26em',
                     textTransform: 'uppercase',
-                    color: '#c9a227',
-                  }}>What We Do</span>
+                    color: '#60A5FA',
+                  }}>What We Build</span>
                 </div>
               </ScrollReveal>
               <ScrollReveal animation="fadeUp" delay={0.07}>
@@ -88,7 +130,7 @@ const ServicesSection: React.FC = () => {
                   style={{
                     fontFamily: "'Playfair Display', Georgia, serif",
                     fontSize: 'clamp(1.8rem, 3.2vw, 3rem)',
-                    fontWeight: 700, color: '#ececec', lineHeight: 1.1,
+                    fontWeight: 700, color: '#F9FAFB', lineHeight: 1.1,
                   }}
                 >
                   End-to-end digital solutions
@@ -103,7 +145,7 @@ const ServicesSection: React.FC = () => {
                 style={{
                   display: 'flex', alignItems: 'center', gap: 6,
                   fontFamily: 'Inter, sans-serif', fontSize: '11px', fontWeight: 600,
-                  letterSpacing: '.1em', textTransform: 'uppercase', color: '#c9a227',
+                  letterSpacing: '.1em', textTransform: 'uppercase', color: '#3B82F6',
                   background: 'none', border: 'none', cursor: 'pointer',
                   transition: 'color .2s ease', whiteSpace: 'nowrap',
                 }}
@@ -122,19 +164,41 @@ const ServicesSection: React.FC = () => {
                 <ScrollReveal key={s.id} animation="fadeUp" delay={i * .07}>
                   <motion.div
                     className="service-card group"
-                    whileHover={{ y: -4, borderColor: 'rgba(201,162,39,.28)', boxShadow: '0 0 44px rgba(201,162,39,.06)' }}
+                    whileHover={{ y: -4, borderColor: 'rgba(59,130,246,.35)', boxShadow: '0 0 48px rgba(37,99,235,.1)' }}
                     transition={{ duration: .3, ease: [.22, 1, .36, 1] }}
                     role="article"
+                    style={{ position: 'relative' }}
                   >
+                    {/* Gold premium badge for highlighted card */}
+                    {s.badge && (
+                      <div style={{
+                        position: 'absolute',
+                        top: '16px',
+                        right: '16px',
+                        padding: '3px 10px',
+                        background: 'rgba(212,175,55,0.1)',
+                        border: '1px solid rgba(212,175,55,0.25)',
+                        borderRadius: '20px',
+                        fontFamily: 'Inter, sans-serif',
+                        fontSize: '9px',
+                        fontWeight: 700,
+                        letterSpacing: '0.14em',
+                        textTransform: 'uppercase',
+                        color: '#D4AF37',
+                      }}>
+                        {s.badge}
+                      </div>
+                    )}
+
                     {/* Icon */}
                     <div className="icon-box" style={{ marginBottom: '18px' }}>
-                      <Icon size={19} style={{ color: '#c9a227' }} />
+                      <Icon size={19} style={{ color: '#60A5FA' }} />
                     </div>
 
                     {/* Title */}
                     <h3 style={{
                       fontFamily: "'Playfair Display', Georgia, serif",
-                      fontSize: '17px', fontWeight: 700, color: '#ececec',
+                      fontSize: '17px', fontWeight: 700, color: '#F9FAFB',
                       marginBottom: '10px', lineHeight: 1.3,
                       transition: 'color .3s ease',
                     }}>
@@ -144,7 +208,7 @@ const ServicesSection: React.FC = () => {
                     {/* Description */}
                     <p style={{
                       fontFamily: 'Inter, sans-serif', fontSize: '13px',
-                      color: '#a1a1aa', lineHeight: 1.7, flex: 1, marginBottom: '20px',
+                      color: '#9CA3AF', lineHeight: 1.7, flex: 1, marginBottom: '20px',
                     }}>
                       {s.desc}
                     </p>
@@ -155,13 +219,21 @@ const ServicesSection: React.FC = () => {
                       style={{
                         display: 'flex', alignItems: 'center', gap: 6,
                         fontFamily: 'Inter, sans-serif', fontSize: '11px', fontWeight: 600,
-                        letterSpacing: '.1em', textTransform: 'uppercase', color: '#c9a227',
+                        letterSpacing: '.1em', textTransform: 'uppercase', color: '#3B82F6',
                         background: 'none', border: 'none', cursor: 'pointer',
                         transition: 'color .2s ease',
                       }}
                     >
                       Learn More <ArrowRight size={11} />
                     </button>
+
+                    {/* Bottom accent line */}
+                    <div style={{
+                      position: 'absolute',
+                      bottom: 0, left: '24px', right: '24px',
+                      height: '1px',
+                      background: 'linear-gradient(90deg, transparent, rgba(59,130,246,0.15), transparent)',
+                    }} />
                   </motion.div>
                 </ScrollReveal>
               )

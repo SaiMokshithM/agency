@@ -41,19 +41,25 @@ const Footer: React.FC = () => {
     <footer
       style={{
         position: 'relative',
-        background: '#090909',
-        borderTop: '1px solid rgba(201,162,39,.07)',
+        background: '#030712',
+        borderTop: '1px solid rgba(37,99,235,.08)',
       }}
       role="contentinfo"
     >
-      {/* Top glow line */}
+      {/* Top glow line — blue */}
       <div style={{
-        position: 'absolute', top: -1, left: '25%', right: '25%', height: 1,
-        background: 'linear-gradient(90deg, transparent, rgba(201,162,39,.3), transparent)',
+        position: 'absolute', top: -1, left: '20%', right: '20%', height: 1,
+        background: 'linear-gradient(90deg, transparent, rgba(59,130,246,.28), transparent)',
         pointerEvents: 'none',
       }} aria-hidden="true" />
 
-      <div className="footer-container">
+      {/* Subtle background glow */}
+      <div style={{
+        position: 'absolute', inset: 0, pointerEvents: 'none',
+        background: 'radial-gradient(ellipse at 20% 0%, rgba(37,99,235,0.04) 0%, transparent 55%)',
+      }} aria-hidden="true" />
+
+      <div className="footer-container" style={{ position: 'relative', zIndex: 1 }}>
         {/* Main grid */}
         <div className="footer-grid">
 
@@ -70,12 +76,13 @@ const Footer: React.FC = () => {
                 alt="AVENOIR logo"
                 style={{ width: '32px', height: '32px', display: 'block', flexShrink: 0 }}
               />
+              {/* Gold logo text — preserved as prestige brand element */}
               <span style={{
                 fontFamily: "'Cinzel', serif",
                 fontSize: '13.5px',
                 fontWeight: 500,
                 letterSpacing: '0.24em',
-                background: 'linear-gradient(135deg, #fff6d1 0%, #e8c45a 50%, #c9a227 100%)',
+                background: 'linear-gradient(135deg, #fff6d1 0%, #e8c45a 50%, #D4AF37 100%)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
@@ -86,13 +93,13 @@ const Footer: React.FC = () => {
             </Link>
 
             <p style={{
-              fontFamily: 'Inter, sans-serif', fontSize: '12px', color: '#8a8a8a',
+              fontFamily: 'Inter, sans-serif', fontSize: '12px', color: '#4B5563',
               lineHeight: 1.75, maxWidth: '220px', marginBottom: '22px',
             }}>
-              We build digital experiences that drive real business impact.
+              Enterprise AI systems and software products for ambitious, forward-thinking businesses.
             </p>
 
-            {/* Social icons */}
+            {/* Social icons — blue */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }} role="list" aria-label="Social links">
               {[
                 { label: 'Instagram', Icon: IconInstagram, href: '#' },
@@ -111,6 +118,35 @@ const Footer: React.FC = () => {
                 </a>
               ))}
             </div>
+
+            {/* Premium status badge */}
+            <div style={{
+              marginTop: '24px',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+              padding: '7px 12px',
+              background: 'rgba(11,18,32,0.8)',
+              border: '1px solid rgba(212,175,55,0.14)',
+              borderRadius: '8px',
+            }}>
+              <span style={{
+                width: '6px', height: '6px',
+                borderRadius: '50%',
+                background: '#D4AF37',
+                boxShadow: '0 0 8px rgba(212,175,55,0.6)',
+              }} />
+              <span style={{
+                fontFamily: 'Inter, sans-serif',
+                fontSize: '10px',
+                fontWeight: 600,
+                letterSpacing: '0.12em',
+                textTransform: 'uppercase',
+                color: '#6B7280',
+              }}>
+                Premium Studio
+              </span>
+            </div>
           </div>
 
           {/* Nav columns */}
@@ -118,7 +154,7 @@ const Footer: React.FC = () => {
             <div key={cat}>
               <h3 style={{
                 fontFamily: 'Inter, sans-serif', fontSize: '10px', fontWeight: 700,
-                letterSpacing: '.18em', textTransform: 'uppercase', color: '#ececec',
+                letterSpacing: '.18em', textTransform: 'uppercase', color: '#F9FAFB',
                 marginBottom: '18px',
               }}>
                 {cat}
@@ -131,11 +167,11 @@ const Footer: React.FC = () => {
                     fontFamily: 'Inter, sans-serif', fontSize: '12px', lineHeight: 1.5,
                   }
                   if (isPlain) return (
-                    <li key={link}><span style={{ ...linkStyle, color: '#8a8a8a' }}>{link}</span></li>
+                    <li key={link}><span style={{ ...linkStyle, color: '#4B5563' }}>{link}</span></li>
                   )
                   if (isEmail) return (
                     <li key={link}>
-                      <a href={`mailto:${link}`} style={{ ...linkStyle, color: '#c9a227', textDecoration: 'none', transition: 'color .2s' }}>{link}</a>
+                      <a href={`mailto:${link}`} style={{ ...linkStyle, color: '#3B82F6', textDecoration: 'none', transition: 'color .2s' }}>{link}</a>
                     </li>
                   )
                   return (
@@ -157,21 +193,21 @@ const Footer: React.FC = () => {
 
         {/* Bottom bar */}
         <div style={{
-          borderTop: '1px solid rgba(201,162,39,.06)',
+          borderTop: '1px solid rgba(37,99,235,.06)',
           paddingTop: '24px',
           display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px',
         }}>
-          <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '11px', color: '#333' }}>
+          <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '11px', color: '#1F2937' }}>
             © {new Date().getFullYear()} Avenoir Digital. All rights reserved.
           </p>
           <div style={{ display: 'flex', gap: '24px' }}>
             {['Privacy Policy', 'Terms of Service'].map(l => (
               <a key={l} href="#" style={{
-                fontFamily: 'Inter, sans-serif', fontSize: '11px', color: '#333',
+                fontFamily: 'Inter, sans-serif', fontSize: '11px', color: '#1F2937',
                 textDecoration: 'none', transition: 'color .2s',
               }}
-              onMouseEnter={e => (e.currentTarget.style.color = '#666')}
-              onMouseLeave={e => (e.currentTarget.style.color = '#333')}
+              onMouseEnter={e => (e.currentTarget.style.color = '#6B7280')}
+              onMouseLeave={e => (e.currentTarget.style.color = '#1F2937')}
               >
                 {l}
               </a>
