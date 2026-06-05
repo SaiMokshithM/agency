@@ -144,7 +144,7 @@ const Footer: React.FC = () => {
                 textTransform: 'uppercase',
                 color: '#6B7280',
               }}>
-                Premium Studio
+                Premium Agency
               </span>
             </div>
           </div>
