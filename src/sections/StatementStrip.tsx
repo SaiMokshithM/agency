@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react'
 import { motion, useInView } from 'framer-motion'
 
-/* ── Canvas wireframe globe — blue themed ── */
+/* ── Canvas wireframe globe ── */
 const WireframeGlobe: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const SIZE = 300
@@ -20,16 +20,16 @@ const WireframeGlobe: React.FC = () => {
     const cx     = SIZE / 2
     const cy     = SIZE / 2
     const R      = SIZE * 0.43
-    const SQUASH = 0.32
-    const N_LAT  = 13
-    const N_LON  = 13
+    const SQUASH = 0.32   // latitude perspective squash
+    const N_LAT  = 13     // latitude rings
+    const N_LON  = 13     // longitude rings
 
-    const drawPass = (alpha: number, lw: number, blur: number, color: string) => {
-      ctx.shadowColor = blur > 0 ? color : 'transparent'
+    const drawPass = (alpha: number, lw: number, blur: number) => {
+      ctx.shadowColor = `rgba(201,162,39,${blur > 0 ? 0.55 : 0})`
       ctx.shadowBlur  = blur
       ctx.lineWidth   = lw
 
-      // Latitude rings
+      // — Latitude rings (horizontal ellipses stacked top-to-bottom)
       for (let i = 0; i <= N_LAT; i++) {
         const phi = -Math.PI / 2 + (Math.PI * i) / N_LAT
         const r   = R * Math.cos(phi)
@@ -37,55 +37,46 @@ const WireframeGlobe: React.FC = () => {
         if (r < 1) continue
         ctx.beginPath()
         ctx.ellipse(cx, y, r, r * SQUASH, 0, 0, Math.PI * 2)
-        ctx.strokeStyle = `rgba(37,99,235,${alpha})`
+        ctx.strokeStyle = `rgba(201,162,39,${alpha})`
         ctx.stroke()
       }
 
-      // Longitude rings
+      // — Longitude rings (vertical ellipses rotated around Y axis)
       for (let i = 0; i < N_LON; i++) {
         const theta = (Math.PI * i) / N_LON
         const rx    = R * Math.abs(Math.sin(theta))
         if (rx < 1) continue
         ctx.beginPath()
         ctx.ellipse(cx, cy, rx, R, 0, 0, Math.PI * 2)
-        ctx.strokeStyle = `rgba(37,99,235,${alpha})`
+        ctx.strokeStyle = `rgba(201,162,39,${alpha})`
         ctx.stroke()
       }
     }
 
     // Layer 1 — big bloom
-    drawPass(0.08, 3.0, 18, 'rgba(37,99,235,0.55)')
+    drawPass(0.10, 3.0, 18)
     // Layer 2 — medium glow
-    drawPass(0.18, 1.2, 8, 'rgba(59,130,246,0.4)')
+    drawPass(0.20, 1.2, 8)
     // Layer 3 — crisp fine lines
     ctx.shadowBlur = 0
-    drawPass(0.28, 0.65, 0, 'transparent')
+    drawPass(0.32, 0.65, 0)
 
-    // Bright equator accent — blue
-    ctx.shadowColor = 'rgba(59,130,246,0.7)'
+    // Bright equator accent
+    ctx.shadowColor = 'rgba(201,162,39,0.7)'
     ctx.shadowBlur  = 10
     ctx.lineWidth   = 1.1
     ctx.beginPath()
     ctx.ellipse(cx, cy, R, R * SQUASH, 0, 0, Math.PI * 2)
-    ctx.strokeStyle = 'rgba(59,130,246,0.55)'
+    ctx.strokeStyle = 'rgba(201,162,39,0.6)'
     ctx.stroke()
 
-    // Outer ambient halo — subtle blue
+    // Outer ambient halo
     ctx.shadowBlur  = 28
-    ctx.shadowColor = 'rgba(37,99,235,0.3)'
+    ctx.shadowColor = 'rgba(201,162,39,0.3)'
     ctx.lineWidth   = 0.8
     ctx.beginPath()
     ctx.arc(cx, cy, R * 1.06, 0, Math.PI * 2)
-    ctx.strokeStyle = 'rgba(37,99,235,0.08)'
-    ctx.stroke()
-
-    // Gold equator accent — luxury micro-detail (10-15% rule)
-    ctx.shadowColor = 'rgba(212,175,55,0.4)'
-    ctx.shadowBlur  = 6
-    ctx.lineWidth   = 0.8
-    ctx.beginPath()
-    ctx.ellipse(cx, cy + R * 0.22, R * 0.95, R * SQUASH * 0.85, 0, 0, Math.PI * 2)
-    ctx.strokeStyle = 'rgba(212,175,55,0.12)'
+    ctx.strokeStyle = 'rgba(201,162,39,0.08)'
     ctx.stroke()
   }, [])
 
@@ -110,7 +101,7 @@ const StatementStrip: React.FC = () => {
       style={{
         position: 'relative',
         width: '100%',
-        background: '#0B1220',
+        background: '#060606',
         overflow: 'hidden',
         minHeight: '160px',
         display: 'flex',
@@ -118,15 +109,15 @@ const StatementStrip: React.FC = () => {
         justifyContent: 'center',
       }}
     >
-      {/* Top hairline — blue */}
+      {/* Top hairline */}
       <div aria-hidden="true" style={{
         position: 'absolute', top: 0, left: 0, right: 0, height: '1px',
-        background: 'linear-gradient(90deg, transparent, rgba(37,99,235,0.2), transparent)',
+        background: 'linear-gradient(90deg, transparent, rgba(201,162,39,0.14), transparent)',
       }} />
-      {/* Bottom hairline — blue */}
+      {/* Bottom hairline */}
       <div aria-hidden="true" style={{
         position: 'absolute', bottom: 0, left: 0, right: 0, height: '1px',
-        background: 'linear-gradient(90deg, transparent, rgba(37,99,235,0.2), transparent)',
+        background: 'linear-gradient(90deg, transparent, rgba(201,162,39,0.14), transparent)',
       }} />
 
       {/* ── LEFT globe — half-visible, cut off at left edge ── */}
@@ -140,11 +131,11 @@ const StatementStrip: React.FC = () => {
           zIndex: 1,
         }}
       >
-        {/* Ambient blue glow behind globe */}
+        {/* Extra ambient glow behind globe */}
         <div style={{
           position: 'absolute', inset: '-20%',
           borderRadius: '50%',
-          background: 'radial-gradient(ellipse at center, rgba(37,99,235,0.16) 0%, transparent 68%)',
+          background: 'radial-gradient(ellipse at center, rgba(201,162,39,0.14) 0%, transparent 68%)',
           filter: 'blur(22px)',
         }} />
         <WireframeGlobe />
@@ -164,7 +155,7 @@ const StatementStrip: React.FC = () => {
         <div style={{
           position: 'absolute', inset: '-20%',
           borderRadius: '50%',
-          background: 'radial-gradient(ellipse at center, rgba(37,99,235,0.16) 0%, transparent 68%)',
+          background: 'radial-gradient(ellipse at center, rgba(201,162,39,0.14) 0%, transparent 68%)',
           filter: 'blur(22px)',
         }} />
         <WireframeGlobe />
@@ -187,7 +178,7 @@ const StatementStrip: React.FC = () => {
           fontSize: 'clamp(0.9rem, 1.4vw, 1.1rem)',
           fontWeight: 400,
           lineHeight: 1.85,
-          color: 'rgba(96,165,250,0.7)',
+          color: 'rgba(201,162,39,0.72)',
           letterSpacing: '0.01em',
           maxWidth: '480px',
           margin: '0 auto',

@@ -1,108 +1,10 @@
 import React, { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { gsap } from 'gsap'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, MousePointer } from 'lucide-react'
 import GoldSphere from '@/components/GoldSphere'
 
 const EASE = 'easeOut' as const
-
-// Floating particle system for hero background
-const ParticleField: React.FC = () => {
-  const canvasRef = useRef<HTMLCanvasElement>(null)
-  const animRef = useRef<number>(0)
-
-  useEffect(() => {
-    const canvas = canvasRef.current
-    if (!canvas) return
-    const ctx = canvas.getContext('2d')
-    if (!ctx) return
-
-    const resize = () => {
-      canvas.width = canvas.offsetWidth
-      canvas.height = canvas.offsetHeight
-    }
-    resize()
-    window.addEventListener('resize', resize)
-
-    const particles = Array.from({ length: 55 }, () => ({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      vx: (Math.random() - 0.5) * 0.28,
-      vy: (Math.random() - 0.5) * 0.28,
-      r: 0.8 + Math.random() * 1.6,
-      alpha: 0.08 + Math.random() * 0.22,
-      pulse: Math.random() * Math.PI * 2,
-    }))
-
-    const connections: [number, number][] = []
-
-    const render = (t: number) => {
-      const time = t * 0.001
-      const w = canvas.width
-      const h = canvas.height
-      ctx.clearRect(0, 0, w, h)
-
-      // update
-      particles.forEach(p => {
-        p.x += p.vx
-        p.y += p.vy
-        p.pulse += 0.018
-        if (p.x < 0 || p.x > w) p.vx *= -1
-        if (p.y < 0 || p.y > h) p.vy *= -1
-      })
-
-      // draw connections
-      particles.forEach((a, i) => {
-        particles.slice(i + 1, i + 8).forEach(b => {
-          const dx = a.x - b.x
-          const dy = a.y - b.y
-          const d = Math.sqrt(dx * dx + dy * dy)
-          if (d < 130) {
-            const alpha = (1 - d / 130) * 0.1
-            ctx.beginPath()
-            ctx.moveTo(a.x, a.y)
-            ctx.lineTo(b.x, b.y)
-            ctx.strokeStyle = `rgba(59,130,246,${alpha})`
-            ctx.lineWidth = 0.6
-            ctx.stroke()
-          }
-        })
-      })
-
-      // draw particles
-      particles.forEach(p => {
-        const pulsedAlpha = p.alpha * (0.7 + 0.3 * Math.sin(p.pulse))
-        ctx.beginPath()
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2)
-        ctx.fillStyle = `rgba(96,165,250,${pulsedAlpha})`
-        ctx.fill()
-      })
-
-      animRef.current = requestAnimationFrame(render)
-    }
-
-    animRef.current = requestAnimationFrame(render)
-    return () => {
-      cancelAnimationFrame(animRef.current)
-      window.removeEventListener('resize', resize)
-    }
-  }, [])
-
-  return (
-    <canvas
-      ref={canvasRef}
-      aria-hidden="true"
-      style={{
-        position: 'absolute',
-        inset: 0,
-        width: '100%',
-        height: '100%',
-        pointerEvents: 'none',
-        opacity: 0.55,
-      }}
-    />
-  )
-}
 
 const HeroSection: React.FC = () => {
   const h1Ref = useRef<HTMLHeadingElement>(null)
@@ -127,7 +29,7 @@ const HeroSection: React.FC = () => {
         position: 'relative',
         width: '100%',
         minHeight: '100vh',
-        background: '#030712',
+        background: '#090909',
         overflow: 'hidden',
       }}
       aria-labelledby="hero-h1"
@@ -135,59 +37,43 @@ const HeroSection: React.FC = () => {
       {/* ── Deep atmosphere layers ── */}
       <div aria-hidden="true" style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }}>
 
-        {/* Primary blue cloud — right side behind sphere */}
+        {/* Primary warm golden cloud — right side behind sphere */}
         <div style={{
           position: 'absolute',
           top: '-5%', right: '-8%',
-          width: '72%', height: '115%',
+          width: '70%', height: '110%',
           borderRadius: '50%',
-          background: 'radial-gradient(ellipse at 60% 45%, rgba(37,99,235,0.16) 0%, rgba(59,130,246,0.07) 38%, transparent 68%)',
-          filter: 'blur(70px)',
+          background: 'radial-gradient(ellipse at 60% 45%, rgba(201,162,39,0.18) 0%, rgba(201,162,39,0.06) 38%, transparent 68%)',
+          filter: 'blur(60px)',
         }} />
 
-        {/* Secondary blue bloom — upper right */}
+        {/* Secondary amber bloom — upper right */}
         <div style={{
           position: 'absolute',
           top: '-20%', right: '5%',
           width: '55%', height: '80%',
           borderRadius: '50%',
-          background: 'radial-gradient(ellipse at 50% 50%, rgba(96,165,250,0.09) 0%, transparent 60%)',
-          filter: 'blur(90px)',
+          background: 'radial-gradient(ellipse at 50% 50%, rgba(232,196,90,0.10) 0%, transparent 60%)',
+          filter: 'blur(80px)',
         }} />
 
-        {/* Subtle bottom-left echo glow */}
+        {/* Subtle bottom-left counter glow */}
         <div style={{
           position: 'absolute',
           bottom: '-10%', left: '-5%',
           width: '40%', height: '55%',
           borderRadius: '50%',
-          background: 'radial-gradient(ellipse at 50% 50%, rgba(37,99,235,0.04) 0%, transparent 65%)',
-          filter: 'blur(100px)',
+          background: 'radial-gradient(ellipse at 50% 50%, rgba(201,162,39,0.04) 0%, transparent 65%)',
+          filter: 'blur(90px)',
         }} />
 
-        {/* Particle field canvas */}
-        <ParticleField />
-
-        {/* Subtle AI grid overlay */}
-        <div style={{
-          position: 'absolute',
-          inset: 0,
-          backgroundImage: `
-            linear-gradient(rgba(37,99,235,0.025) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(37,99,235,0.025) 1px, transparent 1px)
-          `,
-          backgroundSize: '80px 80px',
-          maskImage: 'radial-gradient(ellipse at 65% 50%, rgba(0,0,0,0.5) 0%, transparent 70%)',
-          WebkitMaskImage: 'radial-gradient(ellipse at 65% 50%, rgba(0,0,0,0.5) 0%, transparent 70%)',
-        }} />
-
-        {/* Thin blue light rays from sphere area */}
+        {/* Light rays / streaks from sphere area */}
         {[
-          { rotate: -38, top: '10%', right: '22%', width: '45%', opacity: 0.08 },
-          { rotate: -26, top: '24%', right: '18%', width: '52%', opacity: 0.05 },
-          { rotate: -14, top: '38%', right: '14%', width: '58%', opacity: 0.04 },
-          { rotate: 14,  top: '58%', right: '20%', width: '48%', opacity: 0.05 },
-          { rotate: 30,  top: '72%', right: '24%', width: '40%', opacity: 0.03 },
+          { rotate: -38, top: '10%', right: '22%', width: '45%', height: '1px', opacity: 0.12 },
+          { rotate: -28, top: '22%', right: '18%', width: '55%', height: '1px', opacity: 0.08 },
+          { rotate: -18, top: '35%', right: '14%', width: '60%', height: '1px', opacity: 0.06 },
+          { rotate: 12,  top: '58%', right: '20%', width: '50%', height: '1px', opacity: 0.07 },
+          { rotate: 28,  top: '72%', right: '24%', width: '42%', height: '1px', opacity: 0.05 },
         ].map((ray, i) => (
           <div
             key={i}
@@ -196,8 +82,8 @@ const HeroSection: React.FC = () => {
               top: ray.top,
               right: ray.right,
               width: ray.width,
-              height: '1px',
-              background: `linear-gradient(90deg, transparent, rgba(59,130,246,${ray.opacity}), transparent)`,
+              height: ray.height,
+              background: `linear-gradient(90deg, transparent, rgba(201,162,39,${ray.opacity}), transparent)`,
               transform: `rotate(${ray.rotate}deg)`,
               transformOrigin: 'right center',
               pointerEvents: 'none',
@@ -207,7 +93,7 @@ const HeroSection: React.FC = () => {
 
         {/* Film grain texture */}
         <div style={{
-          position: 'absolute', inset: 0, opacity: 0.12,
+          position: 'absolute', inset: 0, opacity: 0.15,
           backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 500 500' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
           backgroundSize: '180px 180px',
         }} />
@@ -244,54 +130,46 @@ const HeroSection: React.FC = () => {
 
             {/* Badge */}
             <motion.div
-              style={{ marginBottom: '1.8rem', display: 'inline-flex', alignItems: 'center', gap: '12px' }}
+              style={{ marginBottom: '1.8rem', display: 'inline-flex', alignItems: 'center', gap: '14px' }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.12, ease: EASE }}
             >
-              {/* Blue left rule */}
-              <span style={{ width: '28px', height: '1px', background: 'linear-gradient(90deg, #2563EB, rgba(59,130,246,0.3))', flexShrink: 0 }} />
+              {/* Gold left rule */}
+              <span style={{ width: '32px', height: '1px', background: 'linear-gradient(90deg, #c9a227, rgba(201,162,39,0.3))', flexShrink: 0 }} />
               <span style={{
                 fontFamily: 'Inter, sans-serif',
-                fontSize: '10px',
+                fontSize: '11px',
                 fontWeight: 600,
                 letterSpacing: '0.26em',
                 textTransform: 'uppercase',
-                color: '#60A5FA',
+                color: '#c9a227',
               }}>
                 AI-Powered Web Development Agency
               </span>
-              {/* Gold dot — premium accent micro-detail */}
-              <span style={{
-                width: '5px', height: '5px',
-                borderRadius: '50%',
-                background: '#D4AF37',
-                boxShadow: '0 0 8px rgba(212,175,55,0.6)',
-                flexShrink: 0,
-              }} />
             </motion.div>
 
             {/* Headline */}
             <h1
               id="hero-h1"
               ref={h1Ref}
-              aria-label="We build enterprise AI systems that drive impact."
+              aria-label="We build digital experiences that drive impact."
               style={{
                 fontFamily: "'Playfair Display', Georgia, serif",
                 fontSize: 'clamp(2.1rem, 5.2vw, 4.8rem)',
                 fontWeight: 700,
                 lineHeight: 1.08,
                 letterSpacing: '-0.015em',
-                color: '#F9FAFB',
+                color: '#ececec',
               }}
             >
-              <span className="sr-only">We build enterprise AI systems that drive impact.</span>
+              <span className="sr-only">We build digital experiences that drive impact.</span>
               <span aria-hidden="true">
                 <span style={{ display: 'block', overflow: 'hidden' }}>
-                  <span className="w" style={{ display: 'inline-block' }}>We build enterprise</span>
+                  <span className="w" style={{ display: 'inline-block' }}>We build digital</span>
                 </span>
                 <span style={{ display: 'block', overflow: 'hidden' }}>
-                  <span className="w" style={{ display: 'inline-block' }}>AI systems</span>
+                  <span className="w" style={{ display: 'inline-block' }}>experiences</span>
                 </span>
                 <span style={{ display: 'block', overflow: 'hidden', marginTop: '0.05em' }}>
                   <span className="w" style={{ display: 'inline-block', marginRight: '0.3em' }}>that</span>
@@ -299,11 +177,11 @@ const HeroSection: React.FC = () => {
                     className="w"
                     style={{
                       display: 'inline-block',
-                      background: 'linear-gradient(130deg, #D4AF37 0%, #F4D03F 50%, #D4AF37 100%)',
+                      background: 'linear-gradient(130deg, #c9a227 0%, #f0d060 45%, #c9a227 100%)',
                       WebkitBackgroundClip: 'text',
                       WebkitTextFillColor: 'transparent',
                       backgroundClip: 'text',
-                      filter: 'drop-shadow(0 0 24px rgba(212,175,55,0.28))',
+                      filter: 'drop-shadow(0 0 28px rgba(201,162,39,0.35))',
                     }}
                   >
                     drive impact.
@@ -316,9 +194,9 @@ const HeroSection: React.FC = () => {
             <motion.p
               style={{
                 marginTop: '1.5rem',
-                color: '#9CA3AF',
+                color: '#a1a1aa',
                 fontFamily: 'Inter, sans-serif',
-                fontSize: '15px',
+                fontSize: '14px',
                 lineHeight: 1.8,
                 maxWidth: '440px',
               }}
@@ -326,49 +204,9 @@ const HeroSection: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.75, delay: 0.95, ease: EASE }}
             >
-              Custom AI solutions, enterprise software, and intelligent
-              automation for ambitious companies that refuse to accept average.
+              Custom web development, AI automation, and intelligent
+              solutions for forward-thinking companies.
             </motion.p>
-
-            {/* Trust signals row */}
-            <motion.div
-              style={{
-                marginTop: '1.4rem',
-                display: 'flex',
-                gap: '20px',
-                flexWrap: 'wrap',
-                alignItems: 'center',
-              }}
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.75, delay: 1.0, ease: EASE }}
-            >
-              {['AI-Native', 'Enterprise-Grade', 'Full-Stack'].map((tag, i) => (
-                <span
-                  key={tag}
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '6px',
-                    fontFamily: 'Inter, sans-serif',
-                    fontSize: '11px',
-                    fontWeight: 500,
-                    color: '#6B7280',
-                    letterSpacing: '0.04em',
-                  }}
-                >
-                  <span style={{
-                    width: '5px', height: '5px',
-                    borderRadius: '50%',
-                    background: i === 1 ? '#D4AF37' : '#2563EB',
-                    boxShadow: i === 1
-                      ? '0 0 6px rgba(212,175,55,0.5)'
-                      : '0 0 6px rgba(37,99,235,0.5)',
-                  }} />
-                  {tag}
-                </span>
-              ))}
-            </motion.div>
 
             {/* CTA buttons */}
             <motion.div
@@ -382,7 +220,7 @@ const HeroSection: React.FC = () => {
               }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.75, delay: 1.15, ease: EASE }}
+              transition={{ duration: 0.75, delay: 1.1, ease: EASE }}
               className="w-full md:w-auto"
             >
               <button
@@ -416,15 +254,15 @@ const HeroSection: React.FC = () => {
                 border: 'none',
                 cursor: 'pointer',
                 padding: 0,
-                color: '#4B5563',
+                color: '#71717a',
                 fontFamily: 'Inter, sans-serif',
                 fontSize: '10px',
                 letterSpacing: '0.22em',
                 textTransform: 'uppercase',
                 transition: 'color 0.3s ease',
               }}
-              onMouseEnter={e => ((e.currentTarget as HTMLButtonElement).style.color = '#F9FAFB')}
-              onMouseLeave={e => ((e.currentTarget as HTMLButtonElement).style.color = '#4B5563')}
+              onMouseEnter={e => ((e.currentTarget as HTMLButtonElement).style.color = '#ececec')}
+              onMouseLeave={e => ((e.currentTarget as HTMLButtonElement).style.color = '#71717a')}
               aria-label="Scroll to explore"
             >
               Scroll to Explore
@@ -433,7 +271,7 @@ const HeroSection: React.FC = () => {
                 style={{
                   width: '24px',
                   height: '24px',
-                  border: '1px solid rgba(59,130,246,0.28)',
+                  border: '1px solid rgba(201,162,39,0.28)',
                   borderRadius: '4px',
                   display: 'flex',
                   alignItems: 'center',
@@ -447,15 +285,15 @@ const HeroSection: React.FC = () => {
                     width: '5px',
                     height: '5px',
                     borderRadius: '50%',
-                    background: '#2563EB',
-                    boxShadow: '0 0 8px rgba(37,99,235,0.7)',
+                    background: '#c9a227',
+                    boxShadow: '0 0 6px rgba(201,162,39,0.6)',
                   }}
                 />
               </span>
             </motion.button>
           </div>
 
-          {/* ── RIGHT — Blue AI Sphere ── */}
+          {/* ── RIGHT — Sphere ── */}
           <motion.div
             initial={{ opacity: 0, scale: 0.88 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -477,12 +315,12 @@ const HeroSection: React.FC = () => {
                 margin: '0 auto',
               }}
             >
-              {/* Outermost mega glow — blue */}
+              {/* Outermost mega glow */}
               <div style={{
                 position: 'absolute',
                 inset: '-35%',
                 borderRadius: '50%',
-                background: 'radial-gradient(ellipse at center, rgba(37,99,235,0.18) 0%, rgba(37,99,235,0.06) 42%, transparent 70%)',
+                background: 'radial-gradient(ellipse at center, rgba(201,162,39,0.18) 0%, rgba(201,162,39,0.06) 40%, transparent 68%)',
                 filter: 'blur(70px)',
                 pointerEvents: 'none',
               }} />
@@ -492,19 +330,19 @@ const HeroSection: React.FC = () => {
                 position: 'absolute',
                 inset: '-12%',
                 borderRadius: '50%',
-                background: 'radial-gradient(ellipse at center, rgba(59,130,246,0.10) 0%, transparent 65%)',
-                filter: 'blur(32px)',
+                background: 'radial-gradient(ellipse at center, rgba(201,162,39,0.10) 0%, transparent 65%)',
+                filter: 'blur(30px)',
                 pointerEvents: 'none',
               }} />
 
-              {/* Outer dashed orbit — blue */}
+              {/* Outer dashed orbit */}
               <div
                 className="animate-rotate-slow"
                 style={{
                   position: 'absolute',
                   inset: '4%',
                   borderRadius: '50%',
-                  border: '1px dashed rgba(59,130,246,0.1)',
+                  border: '1px dashed rgba(201,162,39,0.09)',
                   pointerEvents: 'none',
                 }}
               />
@@ -516,7 +354,7 @@ const HeroSection: React.FC = () => {
                   position: 'absolute',
                   inset: '14%',
                   borderRadius: '50%',
-                  border: '1px solid rgba(37,99,235,0.06)',
+                  border: '1px solid rgba(201,162,39,0.05)',
                   pointerEvents: 'none',
                 }}
               />
@@ -529,7 +367,7 @@ const HeroSection: React.FC = () => {
                 <GoldSphere className="w-full h-full" />
               </div>
 
-              {/* Orbiting blue dot */}
+              {/* Small orbiting dot */}
               <div
                 className="animate-orbit-dot"
                 style={{
@@ -544,97 +382,13 @@ const HeroSection: React.FC = () => {
                   top: '0%',
                   left: '50%',
                   transform: 'translate(-50%, -50%)',
-                  width: '7px',
-                  height: '7px',
+                  width: '6px',
+                  height: '6px',
                   borderRadius: '50%',
-                  background: '#3B82F6',
-                  boxShadow: '0 0 14px rgba(59,130,246,0.9)',
+                  background: '#e8c45a',
+                  boxShadow: '0 0 12px rgba(201,162,39,0.8)',
                 }} />
               </div>
-
-              {/* Secondary orbiting gold accent dot — luxury micro-detail */}
-              <div
-                className="animate-rotate-reverse"
-                style={{
-                  position: 'absolute',
-                  inset: '2%',
-                  borderRadius: '50%',
-                  pointerEvents: 'none',
-                }}
-              >
-                <div style={{
-                  position: 'absolute',
-                  bottom: '8%',
-                  right: '12%',
-                  width: '5px',
-                  height: '5px',
-                  borderRadius: '50%',
-                  background: '#D4AF37',
-                  boxShadow: '0 0 10px rgba(212,175,55,0.7)',
-                }} />
-              </div>
-
-              {/* Floating stat badge — enterprise trust signal */}
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 1.8 }}
-                style={{
-                  position: 'absolute',
-                  bottom: '12%',
-                  left: '-8%',
-                  background: 'rgba(11,18,32,0.88)',
-                  border: '1px solid rgba(59,130,246,0.22)',
-                  borderRadius: '10px',
-                  padding: '10px 14px',
-                  backdropFilter: 'blur(16px)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '10px',
-                  pointerEvents: 'none',
-                }}
-              >
-                <div style={{
-                  width: '32px', height: '32px',
-                  borderRadius: '8px',
-                  background: 'rgba(37,99,235,0.15)',
-                  border: '1px solid rgba(59,130,246,0.25)',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  flexShrink: 0,
-                }}>
-                  <div style={{
-                    width: '10px', height: '10px',
-                    borderRadius: '50%',
-                    background: '#2563EB',
-                    boxShadow: '0 0 8px rgba(37,99,235,0.8)',
-                  }} />
-                </div>
-                <div>
-                  <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '13px', fontWeight: 700, color: '#F9FAFB', lineHeight: 1 }}>100%</div>
-                  <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '9px', fontWeight: 500, color: '#6B7280', letterSpacing: '0.1em', textTransform: 'uppercase', marginTop: '2px' }}>Client Satisfaction</div>
-                </div>
-              </motion.div>
-
-              {/* Top-right badge */}
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 2.1 }}
-                style={{
-                  position: 'absolute',
-                  top: '15%',
-                  right: '-6%',
-                  background: 'rgba(11,18,32,0.88)',
-                  border: '1px solid rgba(212,175,55,0.2)',
-                  borderRadius: '10px',
-                  padding: '9px 13px',
-                  backdropFilter: 'blur(16px)',
-                  pointerEvents: 'none',
-                }}
-              >
-                <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '11px', fontWeight: 700, color: '#D4AF37', lineHeight: 1 }}>AI-Native</div>
-                <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '9px', color: '#6B7280', marginTop: '2px', letterSpacing: '0.08em' }}>Enterprise Ready</div>
-              </motion.div>
             </div>
           </motion.div>
         </div>
@@ -647,7 +401,7 @@ const HeroSection: React.FC = () => {
           position: 'absolute',
           bottom: 0, left: 0, right: 0,
           height: '160px',
-          background: 'linear-gradient(to bottom, transparent, #030712)',
+          background: 'linear-gradient(to bottom, transparent, #090909)',
           pointerEvents: 'none',
         }}
       />

@@ -45,14 +45,13 @@ const Navbar: React.FC = () => {
           zIndex: 50,
           transition: 'background 0.5s ease, border-color 0.5s ease, backdrop-filter 0.5s ease',
           background: scrolled
-            ? 'rgba(3,7,18,0.92)'
+            ? 'rgba(9,9,9,0.92)'
             : 'transparent',
-          backdropFilter: scrolled ? 'blur(24px) saturate(180%)' : 'none',
-          WebkitBackdropFilter: scrolled ? 'blur(24px) saturate(180%)' : 'none',
+          backdropFilter: scrolled ? 'blur(24px) saturate(160%)' : 'none',
+          WebkitBackdropFilter: scrolled ? 'blur(24px) saturate(160%)' : 'none',
           borderBottom: scrolled
-            ? '1px solid rgba(37,99,235,0.1)'
+            ? '1px solid rgba(201,162,39,0.07)'
             : '1px solid transparent',
-          boxShadow: scrolled ? '0 1px 0 rgba(37,99,235,0.06)' : 'none',
         }}
         role="banner"
       >
@@ -80,13 +79,12 @@ const Navbar: React.FC = () => {
               alt="AVENOIR logo"
               style={{ width: '34px', height: '34px', display: 'block', flexShrink: 0 }}
             />
-            {/* Brand name — gold kept on logo as prestige accent */}
             <span style={{
               fontFamily: "'Cinzel', serif",
               fontSize: '14.5px',
               fontWeight: 500,
               letterSpacing: '0.28em',
-              background: 'linear-gradient(135deg, #fff6d1 0%, #e8c45a 50%, #D4AF37 100%)',
+              background: 'linear-gradient(135deg, #fff6d1 0%, #e8c45a 50%, #c9a227 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',
@@ -150,17 +148,17 @@ const Navbar: React.FC = () => {
             transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
             style={{
               position: 'fixed', inset: 0, zIndex: 40,
-              background: '#030712',
+              background: '#090909',
               display: 'flex', flexDirection: 'column',
               overflowY: 'auto',
             }}
           >
-            {/* BG glow — blue */}
+            {/* BG glow */}
             <div
               aria-hidden="true"
               style={{
                 position: 'absolute', inset: 0, pointerEvents: 'none',
-                background: 'radial-gradient(ellipse at 80% 15%, rgba(37,99,235,0.09) 0%, transparent 55%)',
+                background: 'radial-gradient(ellipse at 80% 15%, rgba(201,162,39,0.07) 0%, transparent 55%)',
               }}
             />
 
@@ -180,9 +178,9 @@ const Navbar: React.FC = () => {
                         width: '100%', textAlign: 'left',
                         padding: '16px 0',
                         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-                        background: 'transparent', border: 'none', borderBottom: '1px solid rgba(37,99,235,0.1)',
+                        background: 'transparent', border: 'none', borderBottom: '1px solid rgba(201,162,39,0.08)',
                         cursor: 'pointer',
-                        color: '#F9FAFB',
+                        color: '#ececec',
                         fontFamily: "'Playfair Display', Georgia, serif",
                         fontSize: 'clamp(1.75rem, 6vw, 2.4rem)',
                         fontWeight: 700,
@@ -190,7 +188,7 @@ const Navbar: React.FC = () => {
                       }}
                     >
                       <span>{l.label}</span>
-                      <ArrowRight size={16} className="arrow-icon" style={{ color: '#3B82F6', opacity: 0.7, transition: 'transform 0.3s ease' }} />
+                      <ArrowRight size={16} className="arrow-icon" style={{ color: '#c9a227', opacity: 0.7, transition: 'transform 0.3s ease' }} />
                     </button>
                   </motion.li>
                 ))}
@@ -210,7 +208,7 @@ const Navbar: React.FC = () => {
 
             <motion.p
               initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6 }}
-              style={{ padding: '0 32px 28px', color: '#374151', fontSize: '12px', fontFamily: 'Inter, sans-serif' }}
+              style={{ padding: '0 32px 28px', color: '#555', fontSize: '12px', fontFamily: 'Inter, sans-serif' }}
             >
               saimokshith2006@gmail.com
             </motion.p>
