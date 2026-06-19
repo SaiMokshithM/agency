@@ -62,12 +62,12 @@ const Footer: React.FC = () => {
             <Link
               to="/"
               style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', textDecoration: 'none', marginBottom: '16px' }}
-              aria-label="AVENOIR home"
+              aria-label="Agency home"
               className="group"
             >
               <img
                 src="/logo-a.svg"
-                alt="AVENOIR logo"
+                alt="Agency logo"
                 style={{ width: '32px', height: '32px', display: 'block', flexShrink: 0 }}
               />
               <span style={{
@@ -81,7 +81,7 @@ const Footer: React.FC = () => {
                 backgroundClip: 'text',
                 display: 'inline-block',
               }}>
-                AVENOIR
+                Agency
               </span>
             </Link>
 
@@ -162,7 +162,7 @@ const Footer: React.FC = () => {
           display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px',
         }}>
           <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '11px', color: '#333' }}>
-            © {new Date().getFullYear()} Avenoir Digital. All rights reserved.
+            © {new Date().getFullYear()} Agency. All rights reserved.
           </p>
           <div style={{ display: 'flex', gap: '24px' }}>
             {['Privacy Policy', 'Terms of Service'].map(l => (

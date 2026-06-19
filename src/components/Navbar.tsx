@@ -70,13 +70,13 @@ const Navbar: React.FC = () => {
           {/* Logo */}
           <Link
             to="/"
-            aria-label="AVENOIR home"
+            aria-label="Agency home"
             style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none', flexShrink: 0 }}
           >
             {/* A mark */}
             <img
               src="/logo-a.svg"
-              alt="AVENOIR logo"
+              alt="Agency logo"
               style={{ width: '34px', height: '34px', display: 'block', flexShrink: 0 }}
             />
             <span style={{
@@ -90,7 +90,7 @@ const Navbar: React.FC = () => {
               backgroundClip: 'text',
               display: 'inline-block',
             }} className="navbar-brand-text">
-              AVENOIR
+              Agency
             </span>
           </Link>
 

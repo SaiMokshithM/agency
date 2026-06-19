@@ -8,7 +8,7 @@ const WhatsAppIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
 )
 
 const phoneNumber = '919347804324'
-const defaultMsg = encodeURIComponent("Hi Avenoir! I'd like to discuss a project with you.")
+const defaultMsg = encodeURIComponent("Hi Agency! I'd like to discuss a project with you.")
 const waUrl = `https://wa.me/${phoneNumber}?text=${defaultMsg}`
 
 const WhatsAppWidget: React.FC = () => {

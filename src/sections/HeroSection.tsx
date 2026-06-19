@@ -145,6 +145,7 @@ const HeroSection: React.FC = () => {
 
             {/* Badge */}
             <motion.div
+              className="hero-badge"
               style={{ marginBottom: '1.8rem', display: 'inline-flex', alignItems: 'center', gap: '14px' }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}

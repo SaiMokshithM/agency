@@ -112,7 +112,7 @@ const ContactSection: React.FC = () => {
           'radial-gradient(ellipse at 92% 70%, rgba(62,143,168,.035) 0%, transparent 50%)',
       }} aria-hidden="true" />
 
-      <div style={{ maxWidth: 1360, margin: '0 auto', padding: '0 56px', position: 'relative' }}>
+      <div style={{ maxWidth: 1360, margin: '0 auto', padding: '0 clamp(16px, 5vw, 56px)', position: 'relative' }}>
 
         {/* Header */}
         <div style={{ marginBottom: '60px', maxWidth: 580 }}>
@@ -222,7 +222,8 @@ const ContactSection: React.FC = () => {
             <div style={{
               background: '#0f0f0f',
               border: '1px solid rgba(62,143,168,.1)',
-              borderRadius: '16px', padding: '36px 30px',
+              borderRadius: '16px',
+              padding: 'clamp(20px, 5vw, 36px) clamp(16px, 4vw, 30px)',
               boxShadow: '0 0 60px rgba(62,143,168,.04)',
             }}>
               <AnimatePresence mode="wait">

@@ -6,15 +6,15 @@ import ScrollReveal from '@/components/ScrollReveal'
 /* ─── FAQ Data ─── */
 const faqs = [
   {
-    q: 'What does Avenoir do?',
-    a: 'Avenoir is a private product design and engineering studio. We build custom digital products — from high-performance websites and SaaS platforms to AI-powered automation systems — for forward-thinking companies that refuse to accept average.',
+    q: 'What does Agency do?',
+    a: 'Agency is a private product design and engineering studio. We build custom digital products — from high-performance websites and SaaS platforms to AI-powered automation systems — for forward-thinking companies that refuse to accept average.',
   },
   {
     q: 'What services do you offer?',
     a: 'We offer four core services: AI Development (custom LLM integrations and intelligent automation), Web Development (modern, high-performance sites and apps), SaaS Development (scalable, secure platforms built for growth), and Automation Systems (workflow automation and API integrations).',
   },
   {
-    q: 'What do clients get when working with Avenoir?',
+    q: 'What do clients get when working with Agency?',
     a: 'Every client receives our complete, undivided focus. We cap active intake to four concurrent projects so your product is never an afterthought. You get end-to-end ownership — strategy, design, engineering, and delivery — all under one roof.',
   },
   {
@@ -121,7 +121,7 @@ const AboutSection: React.FC = () => {
             <div className="about-header-right">
               <ScrollReveal animation="fadeUp" delay={0.12}>
                 <p className="about-body">
-                  Avenoir is a private product design and engineering studio.
+                  Agency is a private product design and engineering studio.
                   We operate at the intersection of aesthetic authority and structural
                   engineering — building custom digital products for forward-thinking
                   enterprises that refuse to accept average.
@@ -153,7 +153,7 @@ const AboutSection: React.FC = () => {
                 <blockquote className="about-quote-text">
                   Complexity is easy. Simplicity is the hardest work of all.
                 </blockquote>
-                <cite className="about-quote-cite">— Avenoir Studio Creed</cite>
+                <cite className="about-quote-cite">— Agency Studio Creed</cite>
               </div>
             </div>
           </div>
