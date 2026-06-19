@@ -46,22 +46,22 @@ const projects = [
 const placeholderVisuals = [
   {
     bg: 'linear-gradient(135deg, #1a1200 0%, #2a1f00 40%, #0B0B0B 100%)',
-    accent: 'rgba(212,175,55,0.12)',
+    accent: 'rgba(62,143,168,0.12)',
     pattern: 'grid',
   },
   {
     bg: 'linear-gradient(225deg, #0B0B0B 0%, #1a1200 50%, #050505 100%)',
-    accent: 'rgba(212,175,55,0.08)',
+    accent: 'rgba(62,143,168,0.08)',
     pattern: 'dots',
   },
   {
     bg: 'linear-gradient(45deg, #050505 0%, #1a1200 60%, #2a1f00 100%)',
-    accent: 'rgba(212,175,55,0.1)',
+    accent: 'rgba(62,143,168,0.1)',
     pattern: 'lines',
   },
   {
     bg: 'linear-gradient(315deg, #0B0B0B 0%, #1a1200 40%, #050505 100%)',
-    accent: 'rgba(212,175,55,0.09)',
+    accent: 'rgba(62,143,168,0.09)',
     pattern: 'grid',
   },
 ]
@@ -73,11 +73,11 @@ const ProjectCard: React.FC<{
 }> = ({ project, visual, index }) => {
   return (
     <motion.article
-      className="group relative rounded-2xl overflow-hidden border border-[rgba(212,175,55,0.1)] cursor-pointer"
+      className="group relative rounded-2xl overflow-hidden border border-[rgba(62,143,168,0.1)] cursor-pointer"
       style={{ background: '#0B0B0B' }}
       whileHover={{
-        borderColor: 'rgba(212,175,55,0.35)',
-        boxShadow: '0 0 60px rgba(212,175,55,0.1)',
+        borderColor: 'rgba(62,143,168,0.35)',
+        boxShadow: '0 0 60px rgba(62,143,168,0.1)',
         y: -4,
       }}
       transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
@@ -108,7 +108,7 @@ const ProjectCard: React.FC<{
         <div
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-full"
           style={{
-            background: 'radial-gradient(ellipse, rgba(212,175,55,0.2) 0%, transparent 70%)',
+            background: 'radial-gradient(ellipse, rgba(62,143,168,0.2) 0%, transparent 70%)',
             filter: 'blur(30px)',
           }}
           aria-hidden="true"
@@ -116,7 +116,7 @@ const ProjectCard: React.FC<{
 
         {/* Category pill */}
         <div className="absolute top-4 left-4">
-          <span className="px-3 py-1 rounded-full text-[10px] font-body font-semibold tracking-[0.15em] uppercase text-[#D4AF37] bg-[rgba(212,175,55,0.1)] border border-[rgba(212,175,55,0.2)]">
+          <span className="px-3 py-1 rounded-full text-[10px] font-body font-semibold tracking-[0.15em] uppercase text-[#3E8FA8] bg-[rgba(62,143,168,0.1)] border border-[rgba(62,143,168,0.2)]">
             {project.category}
           </span>
         </div>
@@ -124,8 +124,8 @@ const ProjectCard: React.FC<{
         {/* Hover overlay with external link */}
         <div className="absolute inset-0 bg-[rgba(5,5,5,0.6)] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
           <div
-            className="w-12 h-12 rounded-full border border-[#D4AF37] flex items-center justify-center text-[#D4AF37]"
-            style={{ boxShadow: '0 0 30px rgba(212,175,55,0.3)' }}
+            className="w-12 h-12 rounded-full border border-[#3E8FA8] flex items-center justify-center text-[#3E8FA8]"
+            style={{ boxShadow: '0 0 30px rgba(62,143,168,0.3)' }}
             aria-hidden="true"
           >
             <ExternalLink size={18} />
@@ -135,10 +135,10 @@ const ProjectCard: React.FC<{
 
       {/* Content */}
       <div className="p-6">
-        <h3 className="font-display text-white text-xl mb-2 group-hover:text-[#F4D67A] transition-colors duration-300">
+        <h3 className="font-display text-white text-xl mb-2 group-hover:text-[#7DC8E0] transition-colors duration-300">
           {project.label}
         </h3>
-        <p className="text-[#A1A1AA] text-sm font-body leading-relaxed mb-5 line-clamp-2">
+        <p className="text-[#AECCD9] text-sm font-body leading-relaxed mb-5 line-clamp-2">
           {project.description}
         </p>
 
@@ -147,14 +147,14 @@ const ProjectCard: React.FC<{
           {project.tags.map((tag) => (
             <span
               key={tag}
-              className="px-2.5 py-1 rounded-md text-[10px] font-body font-medium tracking-wide text-[#A1A1AA] bg-[rgba(255,255,255,0.04)] border border-[rgba(255,255,255,0.06)]"
+              className="px-2.5 py-1 rounded-md text-[10px] font-body font-medium tracking-wide text-[#AECCD9] bg-[rgba(255,255,255,0.04)] border border-[rgba(255,255,255,0.06)]"
             >
               {tag}
             </span>
           ))}
         </div>
 
-        <span className="flex items-center gap-1.5 text-[#D4AF37] text-xs font-body font-medium group-hover:gap-2.5 transition-all duration-300">
+        <span className="flex items-center gap-1.5 text-[#3E8FA8] text-xs font-body font-medium group-hover:gap-2.5 transition-all duration-300">
           View Case Study <ArrowRight size={13} />
         </span>
       </div>
@@ -172,7 +172,7 @@ const WorkSection: React.FC = () => {
       {/* Subtle top divider glow */}
       <div
         className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-px"
-        style={{ background: 'linear-gradient(90deg, transparent, rgba(212,175,55,0.2), transparent)' }}
+        style={{ background: 'linear-gradient(90deg, transparent, rgba(62,143,168,0.2), transparent)' }}
         aria-hidden="true"
       />
 
@@ -182,8 +182,8 @@ const WorkSection: React.FC = () => {
           <div>
             <ScrollReveal animation="fadeUp">
               <div className="inline-flex items-center gap-3.5 mb-4">
-                <span className="w-8 h-px bg-gradient-to-r from-[#D4AF37] to-[rgba(212,175,55,0.3)] shrink-0" />
-                <span className="text-[#D4AF37] text-xs font-body font-medium tracking-[0.2em] uppercase">
+                <span className="w-8 h-px bg-gradient-to-r from-[#3E8FA8] to-[rgba(62,143,168,0.3)] shrink-0" />
+                <span className="text-[#3E8FA8] text-xs font-body font-medium tracking-[0.2em] uppercase">
                   Our Work
                 </span>
               </div>
@@ -197,7 +197,7 @@ const WorkSection: React.FC = () => {
                 <br />
                 <span
                   style={{
-                    background: 'linear-gradient(135deg, #D4AF37 0%, #F4D67A 50%, #D4AF37 100%)',
+                    background: 'linear-gradient(135deg, #3E8FA8 0%, #7DC8E0 50%, #3E8FA8 100%)',
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent',
                     backgroundClip: 'text',
@@ -215,7 +215,7 @@ const WorkSection: React.FC = () => {
                 const el = document.querySelector('#contact')
                 if (el) el.scrollIntoView({ behavior: 'smooth' })
               }}
-              className="flex items-center gap-2 text-[#D4AF37] hover:text-[#F4D67A] text-sm font-body font-medium tracking-wide transition-colors duration-200 group cursor-pointer bg-transparent border-0 py-2 px-1 whitespace-nowrap"
+              className="flex items-center gap-2 text-[#3E8FA8] hover:text-[#7DC8E0] text-sm font-body font-medium tracking-wide transition-colors duration-200 group cursor-pointer bg-transparent border-0 py-2 px-1 whitespace-nowrap"
             >
               View All Work
               <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform duration-200" />
@@ -239,7 +239,7 @@ const WorkSection: React.FC = () => {
         {/* CTA */}
         <ScrollReveal animation="fadeUp" delay={0.2}>
           <div className="mt-16 text-center">
-            <p className="text-[#A1A1AA] font-body text-sm mb-6">
+            <p className="text-[#AECCD9] font-body text-sm mb-6">
               Ready to be our next success story?
             </p>
             <button
@@ -247,7 +247,7 @@ const WorkSection: React.FC = () => {
                 const el = document.querySelector('#contact')
                 if (el) el.scrollIntoView({ behavior: 'smooth' })
               }}
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-full border border-[rgba(212,175,55,0.3)] text-[#D4AF37] hover:bg-[rgba(212,175,55,0.06)] hover:border-[rgba(212,175,55,0.5)] text-sm font-body font-medium tracking-wide transition-all duration-300 cursor-pointer bg-transparent"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-full border border-[rgba(62,143,168,0.3)] text-[#3E8FA8] hover:bg-[rgba(62,143,168,0.06)] hover:border-[rgba(62,143,168,0.5)] text-sm font-body font-medium tracking-wide transition-all duration-300 cursor-pointer bg-transparent"
             >
               Start Your Project <ArrowRight size={16} />
             </button>

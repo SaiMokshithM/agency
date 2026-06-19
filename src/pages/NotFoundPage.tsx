@@ -15,7 +15,7 @@ const NotFoundPage: React.FC = () => {
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
-            background: 'radial-gradient(ellipse at center, rgba(212,175,55,0.06) 0%, transparent 65%)',
+            background: 'radial-gradient(ellipse at center, rgba(62,143,168,0.06) 0%, transparent 65%)',
           }}
           aria-hidden="true"
         />
@@ -31,7 +31,7 @@ const NotFoundPage: React.FC = () => {
             <span
               className="font-display font-bold text-[160px] md:text-[200px] leading-none"
               style={{
-                background: 'linear-gradient(135deg, rgba(212,175,55,0.2) 0%, rgba(244,214,122,0.08) 100%)',
+                background: 'linear-gradient(135deg, rgba(62,143,168,0.2) 0%, rgba(91,184,212,0.08) 100%)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
@@ -56,7 +56,7 @@ const NotFoundPage: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="text-[#A1A1AA] font-body text-base mb-10 leading-relaxed"
+            className="text-[#AECCD9] font-body text-base mb-10 leading-relaxed"
           >
             The page you're looking for doesn't exist or has been moved.
             Let's get you back on track.
@@ -72,8 +72,8 @@ const NotFoundPage: React.FC = () => {
               to="/"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-[#050505] font-body font-semibold text-sm tracking-wide transition-all duration-300"
               style={{
-                background: 'linear-gradient(135deg, #D4AF37, #F4D67A)',
-                boxShadow: '0 0 30px rgba(212,175,55,0.3)',
+                background: 'linear-gradient(135deg, #3E8FA8, #7DC8E0)',
+                boxShadow: '0 0 30px rgba(62,143,168,0.3)',
               }}
             >
               <Home size={17} aria-hidden="true" />
@@ -81,7 +81,7 @@ const NotFoundPage: React.FC = () => {
             </Link>
             <Link
               to="/#contact"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full border border-[rgba(212,175,55,0.3)] text-white font-body font-medium text-sm tracking-wide hover:border-[rgba(212,175,55,0.6)] hover:bg-[rgba(212,175,55,0.04)] transition-all duration-300"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full border border-[rgba(62,143,168,0.3)] text-white font-body font-medium text-sm tracking-wide hover:border-[rgba(62,143,168,0.6)] hover:bg-[rgba(62,143,168,0.04)] transition-all duration-300"
             >
               Contact Us <ArrowRight size={16} aria-hidden="true" />
             </Link>

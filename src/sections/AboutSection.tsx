@@ -92,14 +92,14 @@ const AboutSection: React.FC = () => {
         <div className="about-header">
           <ScrollReveal animation="fadeUp">
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: '14px', marginBottom: '1.2rem' }}>
-              <span style={{ width: '32px', height: '1px', background: 'linear-gradient(90deg, #c9a227, rgba(201,162,39,0.3))', flexShrink: 0 }} />
+              <span style={{ width: '32px', height: '1px', background: 'linear-gradient(90deg, #3E8FA8, rgba(62,143,168,0.3))', flexShrink: 0 }} />
               <span style={{
                 fontFamily: 'Inter, sans-serif',
                 fontSize: '11px',
                 fontWeight: 600,
                 letterSpacing: '0.26em',
                 textTransform: 'uppercase',
-                color: '#c9a227',
+                color: '#3E8FA8',
               }}>Studio Thesis</span>
             </div>
           </ScrollReveal>

@@ -68,11 +68,11 @@ const ContactSection: React.FC = () => {
   /* ── shared styles ── */
   const inputS = (field: keyof ContactFormData): React.CSSProperties => ({
     width: '100%',
-    background: '#0e0e0e',
-    border: `1px solid ${fieldErrors[field] ? 'rgba(220,60,60,.5)' : 'rgba(201,162,39,.13)'}`,
+    background: '#000000',
+    border: `1px solid ${fieldErrors[field] ? 'rgba(220,60,60,.5)' : 'rgba(62,143,168,.13)'}`,
     borderRadius: '8px',
     padding: '13px 16px',
-    color: '#ececec',
+    color: '#F0EAE4',
     fontFamily: 'Inter, sans-serif',
     fontSize: '13px',
     outline: 'none',
@@ -95,21 +95,21 @@ const ContactSection: React.FC = () => {
   return (
     <section
       id="contact"
-      style={{ position: 'relative', background: '#090909', padding: '88px 0', overflow: 'hidden' }}
+      style={{ position: 'relative', background: '#07111F', padding: '88px 0', overflow: 'hidden' }}
       aria-labelledby="contact-h2"
     >
       {/* divider */}
       <div style={{
         position: 'absolute', top: 0, left: 0, right: 0, height: 1,
-        background: 'linear-gradient(90deg,transparent,rgba(201,162,39,.14),transparent)',
+        background: 'linear-gradient(90deg,transparent,rgba(62,143,168,.14),transparent)',
       }} aria-hidden="true" />
 
       {/* bg glows */}
       <div style={{
         position: 'absolute', inset: 0, pointerEvents: 'none',
         background:
-          'radial-gradient(ellipse at 8% 30%, rgba(201,162,39,.045) 0%, transparent 55%),' +
-          'radial-gradient(ellipse at 92% 70%, rgba(201,162,39,.035) 0%, transparent 50%)',
+          'radial-gradient(ellipse at 8% 30%, rgba(62,143,168,.045) 0%, transparent 55%),' +
+          'radial-gradient(ellipse at 92% 70%, rgba(62,143,168,.035) 0%, transparent 50%)',
       }} aria-hidden="true" />
 
       <div style={{ maxWidth: 1360, margin: '0 auto', padding: '0 56px', position: 'relative' }}>
@@ -118,7 +118,7 @@ const ContactSection: React.FC = () => {
         <div style={{ marginBottom: '60px', maxWidth: 580 }}>
           <ScrollReveal animation="fadeUp">
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: '14px', marginBottom: '14px' }}>
-              <span style={{ width: '32px', height: '1px', background: 'linear-gradient(90deg, #c9a227, rgba(201,162,39,0.3))', flexShrink: 0 }} />
+              <span style={{ width: '32px', height: '1px', background: 'linear-gradient(90deg, #3E8FA8, rgba(62,143,168,0.3))', flexShrink: 0 }} />
               <span className="label" style={{ marginBottom: 0 }}>
                 Get In Touch
               </span>
@@ -128,11 +128,11 @@ const ContactSection: React.FC = () => {
             <h2 id="contact-h2" style={{
               fontFamily: "'Playfair Display', Georgia, serif",
               fontSize: 'clamp(1.8rem, 3.2vw, 3rem)',
-              fontWeight: 700, color: '#ececec', lineHeight: 1.1, marginBottom: '14px',
+              fontWeight: 700, color: '#F0EAE4', lineHeight: 1.1, marginBottom: '14px',
             }}>
               Let's Build Something{' '}
               <span style={{
-                background: 'linear-gradient(135deg,#c9a227 0%,#e8c45a 50%,#c9a227 100%)',
+                background: 'linear-gradient(135deg,#3E8FA8 0%,#5BB8D4 50%,#3E8FA8 100%)',
                 WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
               }}>
                 Extraordinary
@@ -155,11 +155,11 @@ const ContactSection: React.FC = () => {
               <div>
                 <h3 style={{
                   fontFamily: "'Playfair Display', Georgia, serif",
-                  fontSize: '20px', fontWeight: 700, color: '#ececec', marginBottom: '10px',
+                  fontSize: '20px', fontWeight: 700, color: '#F0EAE4', marginBottom: '10px',
                 }}>
                   Get in Touch
                 </h3>
-                <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '13px', color: '#a1a1aa', lineHeight: 1.75 }}>
+                <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '13px', color: '#AECCD9', lineHeight: 1.75 }}>
                   Whether you have a clear vision or just an idea — we'd love to hear from you.
                 </p>
               </div>
@@ -173,15 +173,15 @@ const ContactSection: React.FC = () => {
                 ].map(({ Icon, label, val, href }) => (
                   <div key={label} style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
                     <div className="icon-box" style={{ flexShrink: 0 }} aria-hidden="true">
-                      <Icon size={15} style={{ color: '#c9a227' }} />
+                      <Icon size={15} style={{ color: '#3E8FA8' }} />
                     </div>
                     <div>
                       <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '9px', fontWeight: 600, letterSpacing: '.14em', textTransform: 'uppercase', color: '#8a8a8a', marginBottom: '3px' }}>
                         {label}
                       </p>
                       {href
-                        ? <a href={href} style={{ fontFamily: 'Inter, sans-serif', fontSize: '13px', color: '#ececec', textDecoration: 'none' }}>{val}</a>
-                        : <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '13px', color: '#ececec' }}>{val}</p>
+                        ? <a href={href} style={{ fontFamily: 'Inter, sans-serif', fontSize: '13px', color: '#F0EAE4', textDecoration: 'none' }}>{val}</a>
+                        : <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '13px', color: '#F0EAE4' }}>{val}</p>
                       }
                     </div>
                   </div>
@@ -191,12 +191,12 @@ const ContactSection: React.FC = () => {
               {/* Expect box */}
               <div style={{
                 background: '#0f0f0f',
-                border: '1px solid rgba(201,162,39,.1)',
+                border: '1px solid rgba(62,143,168,.1)',
                 borderRadius: '12px', padding: '22px 20px',
               }}>
                 <p style={{
                   fontFamily: 'Inter, sans-serif', fontSize: '10px', fontWeight: 700,
-                  letterSpacing: '.12em', textTransform: 'uppercase', color: '#ececec', marginBottom: '16px',
+                  letterSpacing: '.12em', textTransform: 'uppercase', color: '#F0EAE4', marginBottom: '16px',
                 }}>
                   What to Expect:
                 </p>
@@ -207,8 +207,8 @@ const ContactSection: React.FC = () => {
                     'Transparent project scoping',
                     'No pushy sales tactics',
                   ].map(item => (
-                    <li key={item} style={{ display: 'flex', alignItems: 'center', gap: '9px', fontFamily: 'Inter, sans-serif', fontSize: '12px', color: '#a1a1aa' }}>
-                      <CheckCircle size={11} style={{ color: '#c9a227', flexShrink: 0 }} />
+                    <li key={item} style={{ display: 'flex', alignItems: 'center', gap: '9px', fontFamily: 'Inter, sans-serif', fontSize: '12px', color: '#AECCD9' }}>
+                      <CheckCircle size={11} style={{ color: '#3E8FA8', flexShrink: 0 }} />
                       {item}
                     </li>
                   ))}
@@ -221,9 +221,9 @@ const ContactSection: React.FC = () => {
           <ScrollReveal animation="fadeUp" delay={.12} className="lg:col-span-3 w-full">
             <div style={{
               background: '#0f0f0f',
-              border: '1px solid rgba(201,162,39,.1)',
+              border: '1px solid rgba(62,143,168,.1)',
               borderRadius: '16px', padding: '36px 30px',
-              boxShadow: '0 0 60px rgba(201,162,39,.04)',
+              boxShadow: '0 0 60px rgba(62,143,168,.04)',
             }}>
               <AnimatePresence mode="wait">
                 {status === 'success' ? (
@@ -236,19 +236,19 @@ const ContactSection: React.FC = () => {
                   >
                     <div style={{
                       width: 64, height: 64, borderRadius: '50%',
-                      background: 'rgba(201,162,39,.1)', border: '1px solid rgba(201,162,39,.3)',
-                      boxShadow: '0 0 30px rgba(201,162,39,.18)',
+                      background: 'rgba(62,143,168,.1)', border: '1px solid rgba(62,143,168,.3)',
+                      boxShadow: '0 0 30px rgba(62,143,168,.18)',
                       display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px',
                     }}>
-                      <CheckCircle size={28} style={{ color: '#c9a227' }} />
+                      <CheckCircle size={28} style={{ color: '#3E8FA8' }} />
                     </div>
-                    <h3 style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: '24px', color: '#ececec', marginBottom: '10px' }}>
+                    <h3 style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: '24px', color: '#F0EAE4', marginBottom: '10px' }}>
                       Message Sent!
                     </h3>
-                     <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '13px', color: '#a1a1aa', lineHeight: 1.7, maxWidth: '280px', marginBottom: '28px' }}>
+                     <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '13px', color: '#AECCD9', lineHeight: 1.7, maxWidth: '280px', marginBottom: '28px' }}>
                       Thank you for reaching out. We'll review your project and be in touch within one business day.
                     </p>
-                    <button onClick={() => setStatus('idle')} style={{ fontFamily: 'Inter, sans-serif', fontSize: '12px', color: '#c9a227', background: 'none', border: 'none', cursor: 'pointer' }}>
+                    <button onClick={() => setStatus('idle')} style={{ fontFamily: 'Inter, sans-serif', fontSize: '12px', color: '#3E8FA8', background: 'none', border: 'none', cursor: 'pointer' }}>
                       Send another message →
                     </button>
                   </motion.div>
@@ -262,7 +262,7 @@ const ContactSection: React.FC = () => {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4.5 mb-3.5">
                       <div>
                         <label htmlFor="cn" style={labelS}>
-                          Name <span style={{ color: '#c9a227' }}>*</span>
+                          Name <span style={{ color: '#3E8FA8' }}>*</span>
                         </label>
                         <input
                           id="cn" type="text" name="name" value={form.name}
@@ -275,7 +275,7 @@ const ContactSection: React.FC = () => {
 
                       <div>
                         <label htmlFor="ce" style={labelS}>
-                          Email <span style={{ color: '#c9a227' }}>*</span>
+                          Email <span style={{ color: '#3E8FA8' }}>*</span>
                         </label>
                         <input
                           id="ce" type="email" name="email" value={form.email}
@@ -305,7 +305,7 @@ const ContactSection: React.FC = () => {
                     {/* ── Service dropdown ── */}
                     <div style={{ marginBottom: '14px' }}>
                       <label htmlFor="cs" style={labelS}>
-                        I Want to Build <span style={{ color: '#c9a227' }}>*</span>
+                        I Want to Build <span style={{ color: '#3E8FA8' }}>*</span>
                       </label>
 
                       {/* Custom select wrapper */}
@@ -328,22 +328,22 @@ const ContactSection: React.FC = () => {
                           autoComplete="off"
                           style={{
                             width: '100%',
-                            background: '#0e0e0e',
+                            background: '#000000',
                             border: `1px solid ${
                               fieldErrors.service
                                 ? 'rgba(220,60,60,.5)'
                                 : selectFocus || dropdownOpen
-                                  ? 'rgba(201,162,39,.45)'
-                                  : 'rgba(201,162,39,.13)'
+                                  ? 'rgba(62,143,168,.45)'
+                                  : 'rgba(62,143,168,.13)'
                             }`,
                             borderRadius: '8px',
                             padding: '13px 44px 13px 16px',
-                            color: '#ececec',
+                            color: '#F0EAE4',
                             fontFamily: 'Inter, sans-serif',
                             fontSize: '13px',
                             outline: 'none',
                             transition: 'border-color .2s, box-shadow .2s',
-                            boxShadow: selectFocus || dropdownOpen ? '0 0 0 3px rgba(201,162,39,.07)' : 'none',
+                            boxShadow: selectFocus || dropdownOpen ? '0 0 0 3px rgba(62,143,168,.07)' : 'none',
                           }}
                         />
 
@@ -364,7 +364,7 @@ const ContactSection: React.FC = () => {
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
-                            color: '#c9a227',
+                            color: '#3E8FA8',
                             outline: 'none',
                           }}
                           aria-label="Toggle services options"
@@ -392,8 +392,8 @@ const ContactSection: React.FC = () => {
                                 left: 0,
                                 right: 0,
                                 zIndex: 10,
-                                background: '#0e0e0e',
-                                border: '1px solid rgba(201,162,39,.2)',
+                                background: '#000000',
+                                border: '1px solid rgba(62,143,168,.2)',
                                 borderRadius: '8px',
                                 boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5)',
                                 overflow: 'hidden',
@@ -417,7 +417,7 @@ const ContactSection: React.FC = () => {
                                         background: 'none',
                                         border: 'none',
                                         padding: '12px 16px',
-                                        color: '#ececec',
+                                        color: '#F0EAE4',
                                         fontFamily: 'Inter, sans-serif',
                                         fontSize: '13px',
                                         cursor: 'pointer',
@@ -425,12 +425,12 @@ const ContactSection: React.FC = () => {
                                         outline: 'none',
                                       }}
                                       onMouseEnter={(e) => {
-                                        e.currentTarget.style.background = 'rgba(201,162,39,.08)'
-                                        e.currentTarget.style.color = '#c9a227'
+                                        e.currentTarget.style.background = 'rgba(62,143,168,.08)'
+                                        e.currentTarget.style.color = '#3E8FA8'
                                       }}
                                       onMouseLeave={(e) => {
                                         e.currentTarget.style.background = 'none'
-                                        e.currentTarget.style.color = '#ececec'
+                                        e.currentTarget.style.color = '#F0EAE4'
                                       }}
                                     >
                                       {o.label}
@@ -451,7 +451,7 @@ const ContactSection: React.FC = () => {
                     {/* ── Project details ── */}
                     <div style={{ marginBottom: '24px' }}>
                       <label htmlFor="cpd" style={labelS}>
-                        Project Details <span style={{ color: '#c9a227' }}>*</span>
+                        Project Details <span style={{ color: '#3E8FA8' }}>*</span>
                       </label>
                       <textarea
                         id="cpd" name="project_details" value={form.project_details}

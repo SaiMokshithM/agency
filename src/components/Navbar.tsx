@@ -50,7 +50,7 @@ const Navbar: React.FC = () => {
           backdropFilter: scrolled ? 'blur(24px) saturate(160%)' : 'none',
           WebkitBackdropFilter: scrolled ? 'blur(24px) saturate(160%)' : 'none',
           borderBottom: scrolled
-            ? '1px solid rgba(201,162,39,0.07)'
+            ? '1px solid rgba(62,143,168,0.07)'
             : '1px solid transparent',
         }}
         role="banner"
@@ -84,7 +84,7 @@ const Navbar: React.FC = () => {
               fontSize: '14.5px',
               fontWeight: 500,
               letterSpacing: '0.28em',
-              background: 'linear-gradient(135deg, #fff6d1 0%, #e8c45a 50%, #c9a227 100%)',
+              background: 'linear-gradient(135deg, #C2DCEA 0%, #5BB8D4 50%, #3E8FA8 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',
@@ -148,7 +148,7 @@ const Navbar: React.FC = () => {
             transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
             style={{
               position: 'fixed', inset: 0, zIndex: 40,
-              background: '#090909',
+              background: '#07111F',
               display: 'flex', flexDirection: 'column',
               overflowY: 'auto',
             }}
@@ -158,7 +158,7 @@ const Navbar: React.FC = () => {
               aria-hidden="true"
               style={{
                 position: 'absolute', inset: 0, pointerEvents: 'none',
-                background: 'radial-gradient(ellipse at 80% 15%, rgba(201,162,39,0.07) 0%, transparent 55%)',
+                background: 'radial-gradient(ellipse at 80% 15%, rgba(62,143,168,0.07) 0%, transparent 55%)',
               }}
             />
 
@@ -178,9 +178,9 @@ const Navbar: React.FC = () => {
                         width: '100%', textAlign: 'left',
                         padding: '16px 0',
                         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-                        background: 'transparent', border: 'none', borderBottom: '1px solid rgba(201,162,39,0.08)',
+                        background: 'transparent', border: 'none', borderBottom: '1px solid rgba(62,143,168,0.08)',
                         cursor: 'pointer',
-                        color: '#ececec',
+                        color: '#F0EAE4',
                         fontFamily: "'Playfair Display', Georgia, serif",
                         fontSize: 'clamp(1.75rem, 6vw, 2.4rem)',
                         fontWeight: 700,
@@ -188,7 +188,7 @@ const Navbar: React.FC = () => {
                       }}
                     >
                       <span>{l.label}</span>
-                      <ArrowRight size={16} className="arrow-icon" style={{ color: '#c9a227', opacity: 0.7, transition: 'transform 0.3s ease' }} />
+                      <ArrowRight size={16} className="arrow-icon" style={{ color: '#3E8FA8', opacity: 0.7, transition: 'transform 0.3s ease' }} />
                     </button>
                   </motion.li>
                 ))}

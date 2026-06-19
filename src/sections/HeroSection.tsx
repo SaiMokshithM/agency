@@ -1,8 +1,23 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, Suspense, lazy } from 'react'
 import { motion } from 'framer-motion'
 import { gsap } from 'gsap'
-import { ArrowRight, MousePointer } from 'lucide-react'
-import GoldSphere from '@/components/GoldSphere'
+import { ArrowRight } from 'lucide-react'
+
+// Lazy-load the heavy Three.js solar system — splits it to a separate chunk
+const GoldSphere = lazy(() => import('@/components/GoldSphere'))
+
+// Minimal skeleton shown while Three.js chunk loads
+const SphereSkeleton = () => (
+  <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+    <div style={{
+      width: '60%', maxWidth: '340px', aspectRatio: '1/1',
+      borderRadius: '50%',
+      background: 'radial-gradient(ellipse at 40% 35%, rgba(62,143,168,0.18) 0%, rgba(7,17,31,0.6) 70%)',
+      border: '1px solid rgba(62,143,168,0.12)',
+      animation: 'pulse 2s ease-in-out infinite',
+    }} />
+  </div>
+)
 
 const EASE = 'easeOut' as const
 
@@ -29,7 +44,7 @@ const HeroSection: React.FC = () => {
         position: 'relative',
         width: '100%',
         minHeight: '100vh',
-        background: '#090909',
+        background: '#07111F',
         overflow: 'hidden',
       }}
       aria-labelledby="hero-h1"
@@ -43,7 +58,7 @@ const HeroSection: React.FC = () => {
           top: '-5%', right: '-8%',
           width: '70%', height: '110%',
           borderRadius: '50%',
-          background: 'radial-gradient(ellipse at 60% 45%, rgba(201,162,39,0.18) 0%, rgba(201,162,39,0.06) 38%, transparent 68%)',
+          background: 'radial-gradient(ellipse at 60% 45%, rgba(62,143,168,0.18) 0%, rgba(62,143,168,0.06) 38%, transparent 68%)',
           filter: 'blur(60px)',
         }} />
 
@@ -63,7 +78,7 @@ const HeroSection: React.FC = () => {
           bottom: '-10%', left: '-5%',
           width: '40%', height: '55%',
           borderRadius: '50%',
-          background: 'radial-gradient(ellipse at 50% 50%, rgba(201,162,39,0.04) 0%, transparent 65%)',
+          background: 'radial-gradient(ellipse at 50% 50%, rgba(62,143,168,0.04) 0%, transparent 65%)',
           filter: 'blur(90px)',
         }} />
 
@@ -83,7 +98,7 @@ const HeroSection: React.FC = () => {
               right: ray.right,
               width: ray.width,
               height: ray.height,
-              background: `linear-gradient(90deg, transparent, rgba(201,162,39,${ray.opacity}), transparent)`,
+              background: `linear-gradient(90deg, transparent, rgba(62,143,168,${ray.opacity}), transparent)`,
               transform: `rotate(${ray.rotate}deg)`,
               transformOrigin: 'right center',
               pointerEvents: 'none',
@@ -115,7 +130,7 @@ const HeroSection: React.FC = () => {
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
+            gridTemplateColumns: '1fr 1.35fr',
             alignItems: 'center',
             width: '100%',
             gap: '3rem',
@@ -136,14 +151,14 @@ const HeroSection: React.FC = () => {
               transition={{ duration: 0.7, delay: 0.12, ease: EASE }}
             >
               {/* Gold left rule */}
-              <span style={{ width: '32px', height: '1px', background: 'linear-gradient(90deg, #c9a227, rgba(201,162,39,0.3))', flexShrink: 0 }} />
+              <span style={{ width: '32px', height: '1px', background: 'linear-gradient(90deg, #3E8FA8, rgba(62,143,168,0.3))', flexShrink: 0 }} />
               <span style={{
                 fontFamily: 'Inter, sans-serif',
                 fontSize: '11px',
                 fontWeight: 600,
                 letterSpacing: '0.26em',
                 textTransform: 'uppercase',
-                color: '#c9a227',
+                color: '#3E8FA8',
               }}>
                 AI-Powered Web Development Agency
               </span>
@@ -156,35 +171,58 @@ const HeroSection: React.FC = () => {
               aria-label="We build digital experiences that drive impact."
               style={{
                 fontFamily: "'Playfair Display', Georgia, serif",
-                fontSize: 'clamp(2.1rem, 5.2vw, 4.8rem)',
+                fontSize: 'clamp(1.75rem, 5.5vw, 4.8rem)',
                 fontWeight: 700,
-                lineHeight: 1.08,
+                lineHeight: 1.15,
                 letterSpacing: '-0.015em',
-                color: '#ececec',
+                color: '#F0EAE4',
               }}
             >
               <span className="sr-only">We build digital experiences that drive impact.</span>
-              <span aria-hidden="true">
-                <span style={{ display: 'block', overflow: 'hidden' }}>
-                  <span className="w" style={{ display: 'inline-block' }}>We build digital</span>
+              <span aria-hidden="true" className="flex flex-wrap gap-x-[0.25em] gap-y-[0.08em] justify-center md:justify-start">
+                <span style={{ display: 'inline-block', overflow: 'hidden' }}>
+                  <span className="w" style={{ display: 'inline-block' }}>We</span>
                 </span>
-                <span style={{ display: 'block', overflow: 'hidden' }}>
+                <span style={{ display: 'inline-block', overflow: 'hidden' }}>
+                  <span className="w" style={{ display: 'inline-block' }}>build</span>
+                </span>
+                <span style={{ display: 'inline-block', overflow: 'hidden' }}>
+                  <span className="w" style={{ display: 'inline-block' }}>digital</span>
+                </span>
+                <span style={{ display: 'inline-block', overflow: 'hidden' }}>
                   <span className="w" style={{ display: 'inline-block' }}>experiences</span>
                 </span>
-                <span style={{ display: 'block', overflow: 'hidden', marginTop: '0.05em' }}>
-                  <span className="w" style={{ display: 'inline-block', marginRight: '0.3em' }}>that</span>
+                <span style={{ display: 'inline-block', overflow: 'hidden' }}>
+                  <span className="w" style={{ display: 'inline-block' }}>that</span>
+                </span>
+                <span style={{ display: 'inline-block', overflow: 'hidden' }}>
                   <span
                     className="w"
                     style={{
                       display: 'inline-block',
-                      background: 'linear-gradient(130deg, #c9a227 0%, #f0d060 45%, #c9a227 100%)',
+                      background: 'linear-gradient(130deg, #3E8FA8 0%, #C2DCEA 45%, #3E8FA8 100%)',
                       WebkitBackgroundClip: 'text',
                       WebkitTextFillColor: 'transparent',
                       backgroundClip: 'text',
-                      filter: 'drop-shadow(0 0 28px rgba(201,162,39,0.35))',
+                      filter: 'drop-shadow(0 0 28px rgba(62,143,168,0.35))',
                     }}
                   >
-                    drive impact.
+                    drive
+                  </span>
+                </span>
+                <span style={{ display: 'inline-block', overflow: 'hidden' }}>
+                  <span
+                    className="w"
+                    style={{
+                      display: 'inline-block',
+                      background: 'linear-gradient(130deg, #3E8FA8 0%, #C2DCEA 45%, #3E8FA8 100%)',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text',
+                      filter: 'drop-shadow(0 0 28px rgba(62,143,168,0.35))',
+                    }}
+                  >
+                    impact.
                   </span>
                 </span>
               </span>
@@ -194,11 +232,12 @@ const HeroSection: React.FC = () => {
             <motion.p
               style={{
                 marginTop: '1.5rem',
-                color: '#a1a1aa',
+                color: '#AECCD9',
                 fontFamily: 'Inter, sans-serif',
                 fontSize: '14px',
                 lineHeight: 1.8,
                 maxWidth: '440px',
+                width: '100%',
               }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -216,12 +255,11 @@ const HeroSection: React.FC = () => {
                 gap: '12px',
                 flexWrap: 'wrap',
                 alignItems: 'center',
-                justifyContent: 'center',
               }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.75, delay: 1.1, ease: EASE }}
-              className="w-full md:w-auto"
+              className="w-full md:w-auto justify-center md:justify-start"
             >
               <button
                 onClick={() => scrollTo('#contact')}
@@ -254,15 +292,15 @@ const HeroSection: React.FC = () => {
                 border: 'none',
                 cursor: 'pointer',
                 padding: 0,
-                color: '#71717a',
+                color: '#6E9AAD',
                 fontFamily: 'Inter, sans-serif',
                 fontSize: '10px',
                 letterSpacing: '0.22em',
                 textTransform: 'uppercase',
                 transition: 'color 0.3s ease',
               }}
-              onMouseEnter={e => ((e.currentTarget as HTMLButtonElement).style.color = '#ececec')}
-              onMouseLeave={e => ((e.currentTarget as HTMLButtonElement).style.color = '#71717a')}
+              onMouseEnter={e => ((e.currentTarget as HTMLButtonElement).style.color = '#F0EAE4')}
+              onMouseLeave={e => ((e.currentTarget as HTMLButtonElement).style.color = '#6E9AAD')}
               aria-label="Scroll to explore"
             >
               Scroll to Explore
@@ -271,7 +309,7 @@ const HeroSection: React.FC = () => {
                 style={{
                   width: '24px',
                   height: '24px',
-                  border: '1px solid rgba(201,162,39,0.28)',
+                  border: '1px solid rgba(62,143,168,0.28)',
                   borderRadius: '4px',
                   display: 'flex',
                   alignItems: 'center',
@@ -285,8 +323,8 @@ const HeroSection: React.FC = () => {
                     width: '5px',
                     height: '5px',
                     borderRadius: '50%',
-                    background: '#c9a227',
-                    boxShadow: '0 0 6px rgba(201,162,39,0.6)',
+                    background: '#3E8FA8',
+                    boxShadow: '0 0 6px rgba(62,143,168,0.6)',
                   }}
                 />
               </span>
@@ -310,7 +348,7 @@ const HeroSection: React.FC = () => {
               style={{
                 position: 'relative',
                 width: '100%',
-                maxWidth: '560px',
+                maxWidth: '720px',
                 aspectRatio: '1 / 1',
                 margin: '0 auto',
               }}
@@ -320,7 +358,7 @@ const HeroSection: React.FC = () => {
                 position: 'absolute',
                 inset: '-35%',
                 borderRadius: '50%',
-                background: 'radial-gradient(ellipse at center, rgba(201,162,39,0.18) 0%, rgba(201,162,39,0.06) 40%, transparent 68%)',
+                background: 'radial-gradient(ellipse at center, rgba(62,143,168,0.18) 0%, rgba(62,143,168,0.06) 40%, transparent 68%)',
                 filter: 'blur(70px)',
                 pointerEvents: 'none',
               }} />
@@ -330,7 +368,7 @@ const HeroSection: React.FC = () => {
                 position: 'absolute',
                 inset: '-12%',
                 borderRadius: '50%',
-                background: 'radial-gradient(ellipse at center, rgba(201,162,39,0.10) 0%, transparent 65%)',
+                background: 'radial-gradient(ellipse at center, rgba(62,143,168,0.10) 0%, transparent 65%)',
                 filter: 'blur(30px)',
                 pointerEvents: 'none',
               }} />
@@ -342,7 +380,7 @@ const HeroSection: React.FC = () => {
                   position: 'absolute',
                   inset: '4%',
                   borderRadius: '50%',
-                  border: '1px dashed rgba(201,162,39,0.09)',
+                  border: '1px dashed rgba(62,143,168,0.09)',
                   pointerEvents: 'none',
                 }}
               />
@@ -354,17 +392,19 @@ const HeroSection: React.FC = () => {
                   position: 'absolute',
                   inset: '14%',
                   borderRadius: '50%',
-                  border: '1px solid rgba(201,162,39,0.05)',
+                  border: '1px solid rgba(62,143,168,0.05)',
                   pointerEvents: 'none',
                 }}
               />
 
-              {/* Sphere canvas */}
+              {/* Sphere canvas — lazy loaded for fast page paint */}
               <div
                 className="animate-float-sphere"
                 style={{ width: '100%', height: '100%' }}
               >
-                <GoldSphere className="w-full h-full" />
+                <Suspense fallback={<SphereSkeleton />}>
+                  <GoldSphere className="w-full h-full" />
+                </Suspense>
               </div>
 
               {/* Small orbiting dot */}
@@ -385,8 +425,8 @@ const HeroSection: React.FC = () => {
                   width: '6px',
                   height: '6px',
                   borderRadius: '50%',
-                  background: '#e8c45a',
-                  boxShadow: '0 0 12px rgba(201,162,39,0.8)',
+                  background: '#5BB8D4',
+                  boxShadow: '0 0 12px rgba(62,143,168,0.8)',
                 }} />
               </div>
             </div>
@@ -401,7 +441,7 @@ const HeroSection: React.FC = () => {
           position: 'absolute',
           bottom: 0, left: 0, right: 0,
           height: '160px',
-          background: 'linear-gradient(to bottom, transparent, #090909)',
+          background: 'linear-gradient(to bottom, transparent, #07111F)',
           pointerEvents: 'none',
         }}
       />

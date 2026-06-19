@@ -4,7 +4,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import MainLayout from '@/layouts/MainLayout'
 import HeroSection from '@/sections/HeroSection'
 import ServicesSection from '@/sections/ServicesSection'
-import StatementStrip from '@/sections/StatementStrip'
 import ProcessSection from '@/sections/ProcessSection'
 import AboutSection from '@/sections/AboutSection'
 import CTASection from '@/sections/CTASection'
@@ -22,7 +21,6 @@ const HomePage: React.FC = () => {
     <MainLayout>
       <HeroSection />
       <ServicesSection />
-      <StatementStrip />
       <ProcessSection />
       <AboutSection />
       <CTASection />

@@ -25,7 +25,7 @@ const WireframeGlobe: React.FC = () => {
     const N_LON  = 13     // longitude rings
 
     const drawPass = (alpha: number, lw: number, blur: number) => {
-      ctx.shadowColor = `rgba(201,162,39,${blur > 0 ? 0.55 : 0})`
+      ctx.shadowColor = `rgba(62,143,168,${blur > 0 ? 0.55 : 0})`
       ctx.shadowBlur  = blur
       ctx.lineWidth   = lw
 
@@ -37,7 +37,7 @@ const WireframeGlobe: React.FC = () => {
         if (r < 1) continue
         ctx.beginPath()
         ctx.ellipse(cx, y, r, r * SQUASH, 0, 0, Math.PI * 2)
-        ctx.strokeStyle = `rgba(201,162,39,${alpha})`
+        ctx.strokeStyle = `rgba(62,143,168,${alpha})`
         ctx.stroke()
       }
 
@@ -48,7 +48,7 @@ const WireframeGlobe: React.FC = () => {
         if (rx < 1) continue
         ctx.beginPath()
         ctx.ellipse(cx, cy, rx, R, 0, 0, Math.PI * 2)
-        ctx.strokeStyle = `rgba(201,162,39,${alpha})`
+        ctx.strokeStyle = `rgba(62,143,168,${alpha})`
         ctx.stroke()
       }
     }
@@ -62,21 +62,21 @@ const WireframeGlobe: React.FC = () => {
     drawPass(0.32, 0.65, 0)
 
     // Bright equator accent
-    ctx.shadowColor = 'rgba(201,162,39,0.7)'
+    ctx.shadowColor = 'rgba(62,143,168,0.7)'
     ctx.shadowBlur  = 10
     ctx.lineWidth   = 1.1
     ctx.beginPath()
     ctx.ellipse(cx, cy, R, R * SQUASH, 0, 0, Math.PI * 2)
-    ctx.strokeStyle = 'rgba(201,162,39,0.6)'
+    ctx.strokeStyle = 'rgba(62,143,168,0.6)'
     ctx.stroke()
 
     // Outer ambient halo
     ctx.shadowBlur  = 28
-    ctx.shadowColor = 'rgba(201,162,39,0.3)'
+    ctx.shadowColor = 'rgba(62,143,168,0.3)'
     ctx.lineWidth   = 0.8
     ctx.beginPath()
     ctx.arc(cx, cy, R * 1.06, 0, Math.PI * 2)
-    ctx.strokeStyle = 'rgba(201,162,39,0.08)'
+    ctx.strokeStyle = 'rgba(62,143,168,0.08)'
     ctx.stroke()
   }, [])
 
@@ -112,12 +112,12 @@ const StatementStrip: React.FC = () => {
       {/* Top hairline */}
       <div aria-hidden="true" style={{
         position: 'absolute', top: 0, left: 0, right: 0, height: '1px',
-        background: 'linear-gradient(90deg, transparent, rgba(201,162,39,0.14), transparent)',
+        background: 'linear-gradient(90deg, transparent, rgba(62,143,168,0.14), transparent)',
       }} />
       {/* Bottom hairline */}
       <div aria-hidden="true" style={{
         position: 'absolute', bottom: 0, left: 0, right: 0, height: '1px',
-        background: 'linear-gradient(90deg, transparent, rgba(201,162,39,0.14), transparent)',
+        background: 'linear-gradient(90deg, transparent, rgba(62,143,168,0.14), transparent)',
       }} />
 
       {/* ── LEFT globe — half-visible, cut off at left edge ── */}
@@ -135,7 +135,7 @@ const StatementStrip: React.FC = () => {
         <div style={{
           position: 'absolute', inset: '-20%',
           borderRadius: '50%',
-          background: 'radial-gradient(ellipse at center, rgba(201,162,39,0.14) 0%, transparent 68%)',
+          background: 'radial-gradient(ellipse at center, rgba(62,143,168,0.14) 0%, transparent 68%)',
           filter: 'blur(22px)',
         }} />
         <WireframeGlobe />
@@ -155,7 +155,7 @@ const StatementStrip: React.FC = () => {
         <div style={{
           position: 'absolute', inset: '-20%',
           borderRadius: '50%',
-          background: 'radial-gradient(ellipse at center, rgba(201,162,39,0.14) 0%, transparent 68%)',
+          background: 'radial-gradient(ellipse at center, rgba(62,143,168,0.14) 0%, transparent 68%)',
           filter: 'blur(22px)',
         }} />
         <WireframeGlobe />
@@ -178,7 +178,7 @@ const StatementStrip: React.FC = () => {
           fontSize: 'clamp(0.9rem, 1.4vw, 1.1rem)',
           fontWeight: 400,
           lineHeight: 1.85,
-          color: 'rgba(201,162,39,0.72)',
+          color: 'rgba(62,143,168,0.72)',
           letterSpacing: '0.01em',
           maxWidth: '480px',
           margin: '0 auto',

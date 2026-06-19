@@ -41,15 +41,15 @@ const Footer: React.FC = () => {
     <footer
       style={{
         position: 'relative',
-        background: '#090909',
-        borderTop: '1px solid rgba(201,162,39,.07)',
+        background: '#07111F',
+        borderTop: '1px solid rgba(62,143,168,.07)',
       }}
       role="contentinfo"
     >
       {/* Top glow line */}
       <div style={{
         position: 'absolute', top: -1, left: '25%', right: '25%', height: 1,
-        background: 'linear-gradient(90deg, transparent, rgba(201,162,39,.3), transparent)',
+        background: 'linear-gradient(90deg, transparent, rgba(62,143,168,.3), transparent)',
         pointerEvents: 'none',
       }} aria-hidden="true" />
 
@@ -75,7 +75,7 @@ const Footer: React.FC = () => {
                 fontSize: '13.5px',
                 fontWeight: 500,
                 letterSpacing: '0.24em',
-                background: 'linear-gradient(135deg, #fff6d1 0%, #e8c45a 50%, #c9a227 100%)',
+                background: 'linear-gradient(135deg, #C2DCEA 0%, #5BB8D4 50%, #3E8FA8 100%)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
@@ -118,7 +118,7 @@ const Footer: React.FC = () => {
             <div key={cat}>
               <h3 style={{
                 fontFamily: 'Inter, sans-serif', fontSize: '10px', fontWeight: 700,
-                letterSpacing: '.18em', textTransform: 'uppercase', color: '#ececec',
+                letterSpacing: '.18em', textTransform: 'uppercase', color: '#F0EAE4',
                 marginBottom: '18px',
               }}>
                 {cat}
@@ -135,7 +135,7 @@ const Footer: React.FC = () => {
                   )
                   if (isEmail) return (
                     <li key={link}>
-                      <a href={`mailto:${link}`} style={{ ...linkStyle, color: '#c9a227', textDecoration: 'none', transition: 'color .2s' }}>{link}</a>
+                      <a href={`mailto:${link}`} style={{ ...linkStyle, color: '#3E8FA8', textDecoration: 'none', transition: 'color .2s' }}>{link}</a>
                     </li>
                   )
                   return (
@@ -157,7 +157,7 @@ const Footer: React.FC = () => {
 
         {/* Bottom bar */}
         <div style={{
-          borderTop: '1px solid rgba(201,162,39,.06)',
+          borderTop: '1px solid rgba(62,143,168,.06)',
           paddingTop: '24px',
           display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px',
         }}>

@@ -64,13 +64,13 @@ const ProcessSection: React.FC = () => {
     <section
       id="process"
       ref={sectionRef}
-      style={{ position: 'relative', background: '#090909', padding: '88px 0', overflow: 'hidden' }}
+      style={{ position: 'relative', background: '#07111F', padding: '88px 0', overflow: 'hidden' }}
       aria-labelledby="process-h2"
     >
       {/* top divider */}
       <div style={{
         position: 'absolute', top: 0, left: 0, right: 0, height: 1,
-        background: 'linear-gradient(90deg,transparent,rgba(201,162,39,.14),transparent)',
+        background: 'linear-gradient(90deg,transparent,rgba(62,143,168,.14),transparent)',
       }} aria-hidden="true" />
 
       {/* centre glow */}
@@ -78,7 +78,7 @@ const ProcessSection: React.FC = () => {
         position: 'absolute', left: '50%', top: '50%',
         transform: 'translate(-50%,-50%)',
         width: 700, height: 300,
-        background: 'radial-gradient(ellipse, rgba(201,162,39,.04) 0%, transparent 70%)',
+        background: 'radial-gradient(ellipse, rgba(62,143,168,.04) 0%, transparent 70%)',
         filter: 'blur(80px)', pointerEvents: 'none',
       }} aria-hidden="true" />
 
@@ -88,14 +88,14 @@ const ProcessSection: React.FC = () => {
         <div style={{ marginBottom: '60px' }}>
           <ScrollReveal animation="fadeUp">
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: '14px', marginBottom: '14px' }}>
-              <span style={{ width: '32px', height: '1px', background: 'linear-gradient(90deg, #c9a227, rgba(201,162,39,0.3))', flexShrink: 0 }} />
+              <span style={{ width: '32px', height: '1px', background: 'linear-gradient(90deg, #3E8FA8, rgba(62,143,168,0.3))', flexShrink: 0 }} />
               <span style={{
                 fontFamily: 'Inter, sans-serif',
                 fontSize: '11px',
                 fontWeight: 600,
                 letterSpacing: '0.26em',
                 textTransform: 'uppercase',
-                color: '#c9a227',
+                color: '#3E8FA8',
               }}>Our Process</span>
             </div>
           </ScrollReveal>
@@ -105,12 +105,12 @@ const ProcessSection: React.FC = () => {
               style={{
                 fontFamily: "'Playfair Display', Georgia, serif",
                 fontSize: 'clamp(1.8rem, 3.2vw, 3rem)',
-                fontWeight: 700, color: '#ececec', lineHeight: 1.1,
+                fontWeight: 700, color: '#F0EAE4', lineHeight: 1.1,
               }}
             >
               A proven process for{' '}
               <span style={{
-                background: 'linear-gradient(135deg,#c9a227 0%,#e8c45a 50%,#c9a227 100%)',
+                background: 'linear-gradient(135deg,#3E8FA8 0%,#5BB8D4 50%,#3E8FA8 100%)',
                 WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
               }}>
                 exceptional results
@@ -125,13 +125,13 @@ const ProcessSection: React.FC = () => {
             {/* track BG */}
             <div className="process-h-line" style={{
               position: 'absolute', top: 8, left: '9%', right: '9%',
-              height: 1, background: 'rgba(201,162,39,.1)',
+              height: 1, background: 'rgba(62,143,168,.1)',
             }} aria-hidden="true" />
             {/* track animated */}
             <div ref={hLineRef} className="process-h-line" style={{
               position: 'absolute', top: 8, left: '9%', right: '9%',
               height: 1,
-              background: 'linear-gradient(90deg,#c9a227,#e8c45a,#c9a227)',
+              background: 'linear-gradient(90deg,#3E8FA8,#5BB8D4,#3E8FA8)',
               transformOrigin: 'left center',
             }} aria-hidden="true" />
 
@@ -145,12 +145,12 @@ const ProcessSection: React.FC = () => {
                       style={{ position: 'absolute', top: 0, left: '50%', transform: 'translateX(-50%)' }}
                       aria-hidden="true"
                     >
-                      <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#c9a227', display: 'block' }} />
+                      <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#3E8FA8', display: 'block' }} />
                     </div>
 
                     <p style={{
                       fontFamily: 'Inter, sans-serif', fontSize: '10px', fontWeight: 700,
-                      letterSpacing: '.2em', textTransform: 'uppercase', color: '#c9a227',
+                      letterSpacing: '.2em', textTransform: 'uppercase', color: '#3E8FA8',
                       marginBottom: '8px',
                     }}>
                       {s.n}
@@ -158,7 +158,7 @@ const ProcessSection: React.FC = () => {
 
                     <h3 style={{
                       fontFamily: "'Playfair Display', Georgia, serif",
-                      fontSize: '16px', fontWeight: 700, color: '#ececec',
+                      fontSize: '16px', fontWeight: 700, color: '#F0EAE4',
                       marginBottom: '8px', lineHeight: 1.3,
                     }}>
                       {s.title}
@@ -166,7 +166,7 @@ const ProcessSection: React.FC = () => {
 
                     <p style={{
                       fontFamily: 'Inter, sans-serif', fontSize: '12px',
-                      color: '#a1a1aa', lineHeight: 1.7,
+                      color: '#AECCD9', lineHeight: 1.7,
                     }}>
                       {s.desc}
                     </p>
