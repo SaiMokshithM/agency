@@ -14,25 +14,41 @@ export default defineConfig({
     },
   },
   build: {
+    // Target modern browsers — smaller output, no unnecessary polyfills
+    target: 'es2020',
+    minify: 'esbuild',
+    // Raise warning limit since we're aware of Three.js size
+    chunkSizeWarningLimit: 600,
     rollupOptions: {
       output: {
         manualChunks(id) {
-          if (id.includes('node_modules')) {
-            if (id.includes('react-router-dom')) return 'router';
-            if (id.includes('react')) return 'react';
-            if (id.includes('framer-motion')) return 'motion';
-            if (id.includes('gsap')) return 'gsap';
-            if (id.includes('@supabase/supabase-js')) return 'supabase';
-            if (id.includes('lucide-react')) return 'icons';
-            return 'vendor';
-          }
+          if (!id.includes('node_modules')) return
+
+          // Three.js gets its own chunk — only loaded on desktop
+          if (id.includes('three')) return 'three'
+
+          // Heavy animation libs split out
+          if (id.includes('framer-motion')) return 'motion'
+          if (id.includes('gsap'))          return 'gsap'
+
+          // Supabase — only used in contact form
+          if (id.includes('@supabase'))     return 'supabase'
+
+          // Router
+          if (id.includes('react-router'))  return 'router'
+
+          // Core React
+          if (id.includes('react-dom') || id.includes('/react/')) return 'react'
+
+          // Everything else
+          return 'vendor'
         },
       },
     },
-    target: 'esnext',
-    minify: 'esbuild',
   },
   optimizeDeps: {
-    include: ['framer-motion', 'gsap', 'lucide-react'],
+    // Pre-bundle only what's needed for first paint — keep Three.js out
+    include: ['react', 'react-dom', 'framer-motion'],
+    exclude: ['three', 'gsap'],
   },
 })

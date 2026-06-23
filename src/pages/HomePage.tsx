@@ -1,30 +1,54 @@
-import React, { useEffect } from 'react'
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import React, { Suspense, lazy, useEffect } from 'react'
 import MainLayout from '@/layouts/MainLayout'
 import HeroSection from '@/sections/HeroSection'
-import ServicesSection from '@/sections/ServicesSection'
-import ProcessSection from '@/sections/ProcessSection'
-import AboutSection from '@/sections/AboutSection'
-import CTASection from '@/sections/CTASection'
-import ContactSection from '@/sections/ContactSection'
 
-gsap.registerPlugin(ScrollTrigger)
+// Lazy-load every below-fold section — only Hero is eagerly loaded
+const ServicesSection = lazy(() => import('@/sections/ServicesSection'))
+const ProcessSection  = lazy(() => import('@/sections/ProcessSection'))
+const AboutSection    = lazy(() => import('@/sections/AboutSection'))
+const CTASection      = lazy(() => import('@/sections/CTASection'))
+const ContactSection  = lazy(() => import('@/sections/ContactSection'))
+
+// Thin placeholder while a section is being fetched
+const SectionFallback = () => (
+  <div style={{ minHeight: '200px', background: '#07111F' }} />
+)
 
 const HomePage: React.FC = () => {
   useEffect(() => {
-    const id = setTimeout(() => ScrollTrigger.refresh(), 300)
-    return () => clearTimeout(id)
+    // Defer GSAP ScrollTrigger setup so it never blocks the first paint
+    let cleanup: (() => void) | undefined
+    const id = setTimeout(async () => {
+      const { gsap } = await import('gsap')
+      const { ScrollTrigger } = await import('gsap/ScrollTrigger')
+      gsap.registerPlugin(ScrollTrigger)
+      ScrollTrigger.refresh()
+      cleanup = () => ScrollTrigger.getAll().forEach(t => t.kill())
+    }, 500)
+    return () => {
+      clearTimeout(id)
+      cleanup?.()
+    }
   }, [])
 
   return (
     <MainLayout>
       <HeroSection />
-      <ServicesSection />
-      <ProcessSection />
-      <AboutSection />
-      <CTASection />
-      <ContactSection />
+      <Suspense fallback={<SectionFallback />}>
+        <ServicesSection />
+      </Suspense>
+      <Suspense fallback={<SectionFallback />}>
+        <ProcessSection />
+      </Suspense>
+      <Suspense fallback={<SectionFallback />}>
+        <AboutSection />
+      </Suspense>
+      <Suspense fallback={<SectionFallback />}>
+        <CTASection />
+      </Suspense>
+      <Suspense fallback={<SectionFallback />}>
+        <ContactSection />
+      </Suspense>
     </MainLayout>
   )
 }

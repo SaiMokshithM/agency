@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, ArrowRight } from 'lucide-react'
 import { useScrolled } from '@/hooks/useScrolled'
+import { Logo } from './Logo'
 
 const navLinks = [
   { label: 'Services',  href: '#services'  },
@@ -70,28 +71,10 @@ const Navbar: React.FC = () => {
           {/* Logo */}
           <Link
             to="/"
-            aria-label="Agency home"
+            aria-label="VELOtechnoz home"
             style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none', flexShrink: 0 }}
           >
-            {/* A mark */}
-            <img
-              src="/logo-a.svg"
-              alt="Agency logo"
-              style={{ width: '34px', height: '34px', display: 'block', flexShrink: 0 }}
-            />
-            <span style={{
-              fontFamily: "'Cinzel', serif",
-              fontSize: '14.5px',
-              fontWeight: 500,
-              letterSpacing: '0.28em',
-              background: 'linear-gradient(135deg, #C2DCEA 0%, #5BB8D4 50%, #3E8FA8 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-              display: 'inline-block',
-            }} className="navbar-brand-text">
-              Agency
-            </span>
+            <Logo fontSize="22px" />
           </Link>
 
           {/* Desktop nav links — centered */}

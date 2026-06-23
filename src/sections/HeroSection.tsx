@@ -1,9 +1,8 @@
-import React, { useEffect, useRef, Suspense, lazy } from 'react'
+import React, { useEffect, useRef, Suspense, lazy, useState } from 'react'
 import { motion } from 'framer-motion'
-import { gsap } from 'gsap'
 import { ArrowRight } from 'lucide-react'
 
-// Lazy-load the heavy Three.js solar system — splits it to a separate chunk
+// Lazy-loaded — Three.js downloads after first paint on all devices
 const GoldSphere = lazy(() => import('@/components/GoldSphere'))
 
 // Minimal skeleton shown while Three.js chunk loads
@@ -23,15 +22,20 @@ const EASE = 'easeOut' as const
 
 const HeroSection: React.FC = () => {
   const h1Ref = useRef<HTMLHeadingElement>(null)
+  const [isMobile, setIsMobile] = useState(() => window.innerWidth <= 860)
 
   useEffect(() => {
+    setIsMobile(window.innerWidth <= 860)
+    if (window.innerWidth <= 860) return // Show text instantly on mobile — skip GSAP
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
     if (!h1Ref.current) return
-    const words = h1Ref.current.querySelectorAll('.w')
-    gsap.fromTo(words,
-      { y: 88, opacity: 0 },
-      { y: 0, opacity: 1, duration: 1.1, stagger: 0.045, delay: 0.4, ease: 'power4.out' }
-    )
+    import('gsap').then(({ gsap }) => {
+      const words = h1Ref.current!.querySelectorAll('.w')
+      gsap.fromTo(words,
+        { y: 88, opacity: 0 },
+        { y: 0, opacity: 1, duration: 1.1, stagger: 0.045, delay: 0.2, ease: 'power4.out' }
+      )
+    })
   }, [])
 
   const scrollTo = (id: string) =>
@@ -147,9 +151,9 @@ const HeroSection: React.FC = () => {
             <motion.div
               className="hero-badge"
               style={{ marginBottom: '1.8rem', display: 'inline-flex', alignItems: 'center', gap: '14px' }}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: isMobile ? 0 : 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.12, ease: EASE }}
+              transition={{ duration: isMobile ? 0 : 0.7, delay: isMobile ? 0 : 0.12, ease: EASE }}
             >
               {/* Gold left rule */}
               <span style={{ width: '32px', height: '1px', background: 'linear-gradient(90deg, #3E8FA8, rgba(62,143,168,0.3))', flexShrink: 0 }} />
@@ -240,9 +244,9 @@ const HeroSection: React.FC = () => {
                 maxWidth: '440px',
                 width: '100%',
               }}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: isMobile ? 0 : 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.75, delay: 0.95, ease: EASE }}
+              transition={{ duration: isMobile ? 0 : 0.75, delay: isMobile ? 0 : 0.95, ease: EASE }}
             >
               Custom web development, AI automation, and intelligent
               solutions for forward-thinking companies.
@@ -257,9 +261,9 @@ const HeroSection: React.FC = () => {
                 flexWrap: 'wrap',
                 alignItems: 'center',
               }}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: isMobile ? 0 : 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.75, delay: 1.1, ease: EASE }}
+              transition={{ duration: isMobile ? 0 : 0.75, delay: isMobile ? 0 : 1.1, ease: EASE }}
               className="w-full md:w-auto justify-center md:justify-start"
             >
               <button
@@ -282,7 +286,7 @@ const HeroSection: React.FC = () => {
             <motion.button
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 1.1, delay: 2.0 }}
+              transition={{ duration: isMobile ? 0 : 1.1, delay: isMobile ? 0 : 2.0 }}
               onClick={() => scrollTo('#services')}
               style={{
                 marginTop: '3.2rem',
@@ -332,7 +336,7 @@ const HeroSection: React.FC = () => {
             </motion.button>
           </div>
 
-          {/* ── RIGHT — Sphere ── */}
+          {/* ── RIGHT — Galaxy sphere (lazy on all devices) ── */}
           <motion.div
             initial={{ opacity: 0, scale: 0.88 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -398,7 +402,7 @@ const HeroSection: React.FC = () => {
                 }}
               />
 
-              {/* Sphere canvas — lazy loaded for fast page paint */}
+              {/* Sphere canvas — lazy loaded, SphereSkeleton shows while downloading */}
               <div
                 className="animate-float-sphere"
                 style={{ width: '100%', height: '100%' }}

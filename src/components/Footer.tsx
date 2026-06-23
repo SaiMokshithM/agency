@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Mail } from 'lucide-react'
+import { Logo } from './Logo'
 
 /* ── Inline SVG brand icons ── */
 const IconInstagram = () => (
@@ -62,27 +63,10 @@ const Footer: React.FC = () => {
             <Link
               to="/"
               style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', textDecoration: 'none', marginBottom: '16px' }}
-              aria-label="Agency home"
+              aria-label="VELOtechnoz home"
               className="group"
             >
-              <img
-                src="/logo-a.svg"
-                alt="Agency logo"
-                style={{ width: '32px', height: '32px', display: 'block', flexShrink: 0 }}
-              />
-              <span style={{
-                fontFamily: "'Cinzel', serif",
-                fontSize: '13.5px',
-                fontWeight: 500,
-                letterSpacing: '0.24em',
-                background: 'linear-gradient(135deg, #C2DCEA 0%, #5BB8D4 50%, #3E8FA8 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-                display: 'inline-block',
-              }}>
-                Agency
-              </span>
+              <Logo fontSize="18px" />
             </Link>
 
             <p style={{
@@ -162,7 +146,7 @@ const Footer: React.FC = () => {
           display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px',
         }}>
           <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '11px', color: '#333' }}>
-            © {new Date().getFullYear()} Agency. All rights reserved.
+            © {new Date().getFullYear()} VELOtechnoz. All rights reserved.
           </p>
           <div style={{ display: 'flex', gap: '24px' }}>
             {['Privacy Policy', 'Terms of Service'].map(l => (
