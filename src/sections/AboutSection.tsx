@@ -11,7 +11,7 @@ const faqs = [
   },
   {
     q: 'What services do you offer?',
-    a: 'We offer four core services: AI Development (custom LLM integrations and intelligent automation), Web Development (modern, high-performance sites and apps), SaaS Development (scalable, secure platforms built for growth), and Automation Systems (workflow automation and API integrations).',
+    a: 'We offer five core services: AI Development (custom LLM integrations and intelligent automation), Web Development (modern, high-performance sites and apps), SaaS Development (scalable, secure platforms built for growth), Automation Systems (workflow automation and API integrations), and Logo & Poster Design (distinctive brand identities and stunning visual collateral).',
   },
   {
     q: 'What do clients get when working with VELOtechnoz?',

@@ -9,10 +9,11 @@ import { submitContactForm } from '@/services/contactService'
 import type { ContactFormData, FormStatus, ServiceType } from '@/types'
 
 const SERVICE_OPTIONS: { value: ServiceType; label: string }[] = [
-  { value: 'AI Development',    label: 'AI Development'    },
-  { value: 'Web Development',   label: 'Web Development'   },
-  { value: 'SaaS Development',  label: 'SaaS Development'  },
-  { value: 'Automation Systems',label: 'Automation Systems' },
+  { value: 'AI Development',      label: 'AI Development'      },
+  { value: 'Web Development',     label: 'Web Development'     },
+  { value: 'SaaS Development',    label: 'SaaS Development'    },
+  { value: 'Automation Systems',  label: 'Automation Systems'  },
+  { value: 'Logo & Poster Design',label: 'Logo & Poster Design' },
 ]
 
 const blank: ContactFormData = {

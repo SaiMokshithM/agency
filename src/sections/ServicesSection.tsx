@@ -1,10 +1,10 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Bot, Code2, Layers, Zap, ArrowRight } from 'lucide-react'
+import { Bot, Code2, Layers, Zap, Palette, ArrowRight } from 'lucide-react'
 import ScrollReveal from '@/components/ScrollReveal'
 
 /* ── Marquee ── */
-const MARQUEE_ITEMS = ['Web Development', 'AI Automation', 'SaaS Platforms', 'Product Design', 'API Integration', 'Performance Optimisation']
+const MARQUEE_ITEMS = ['Web Development', 'AI Automation', 'SaaS Platforms', 'Product Design', 'API Integration', 'Performance Optimisation', 'Logo & Poster Design']
 const MarqueeStrip: React.FC = () => {
   const items = [...MARQUEE_ITEMS, ...MARQUEE_ITEMS, ...MARQUEE_ITEMS]
   return (
@@ -39,10 +39,11 @@ const MarqueeStrip: React.FC = () => {
 
 /* ── Service card data ── */
 const services = [
-  { id:'ai',   icon: Bot,   title: 'AI Development',    desc: 'Custom AI solutions, LLM integrations and intelligent automation systems.',   img: '/service_ai_bg.png'   },
-  { id:'web',  icon: Code2, title: 'Web Development',   desc: 'High-performance websites and web applications built with modern technologies.', img: '/service_web_bg.png'  },
-  { id:'saas', icon: Layers,title: 'SaaS Development',  desc: 'Scalable SaaS platforms that are secure, reliable and built for growth.',       img: '/service_saas_bg.png' },
-  { id:'auto', icon: Zap,   title: 'Automation Systems',desc: 'Workflow automation, API integrations and custom business solutions.',           img: '/service_auto_bg.png' },
+  { id:'ai',     icon: Bot,    title: 'AI Development',       desc: 'Custom AI solutions, LLM integrations and intelligent automation systems.',                        img: '/service_ai_bg.png'     },
+  { id:'web',    icon: Code2,  title: 'Web Development',      desc: 'High-performance websites and web applications built with modern technologies.',                    img: '/service_web_bg.png'    },
+  { id:'saas',   icon: Layers, title: 'SaaS Development',     desc: 'Scalable SaaS platforms that are secure, reliable and built for growth.',                          img: '/service_saas_bg.png'   },
+  { id:'auto',   icon: Zap,    title: 'Automation Systems',   desc: 'Workflow automation, API integrations and custom business solutions.',                              img: '/service_auto_bg.png'   },
+  { id:'design', icon: Palette,title: 'Logo & Poster Design', desc: 'Distinctive brand identities and stunning visual designs — logos, posters and marketing collateral that make your brand unforgettable.', img: '/service_design_bg.png' },
 ]
 
 const ServicesSection: React.FC = () => {

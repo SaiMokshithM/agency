@@ -165,7 +165,7 @@ const HeroSection: React.FC = () => {
                 textTransform: 'uppercase',
                 color: '#3E8FA8',
               }}>
-                AI-Powered Web Development Agency
+                AI-Powered Tech Studio
               </span>
             </motion.div>
 

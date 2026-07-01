@@ -17,16 +17,17 @@ const IconTwitter = () => (
 )
 
 const cols: Record<string, string[]> = {
-  Services: ['AI Development', 'Web Development', 'SaaS Development', 'Automation Systems'],
+  Services: ['AI Development', 'Web Development', 'SaaS Development', 'Automation Systems', 'Logo & Poster Design'],
   Company:  ['About Us', 'Our Approach', 'Contact'],
   Contact:  ['saimokshith2006@gmail.com', "Let's build something", 'great together.'],
 }
 
 const sectionMap: Record<string, string> = {
-  'AI Development':    '#services',
-  'Web Development':   '#services',
-  'SaaS Development':  '#services',
-  'Automation Systems':'#services',
+  'AI Development':      '#services',
+  'Web Development':     '#services',
+  'SaaS Development':    '#services',
+  'Automation Systems':  '#services',
+  'Logo & Poster Design':'#services',
   'About Us':          '#about',
   'Our Approach':      '#process',
   'Contact':           '#contact',

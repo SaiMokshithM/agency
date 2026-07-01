@@ -3,6 +3,7 @@ export type ServiceType =
   | 'Web Development'
   | 'SaaS Development'
   | 'Automation Systems'
+  | 'Logo & Poster Design'
   | ''
 
 export interface ContactFormData {
