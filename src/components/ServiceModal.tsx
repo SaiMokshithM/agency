@@ -33,7 +33,11 @@ const ServiceModal: React.FC<Props> = ({ service, onClose }) => {
     return () => window.removeEventListener('keydown', handler)
   }, [onClose])
 
-  const stagger = (i: number) => ({ delay: 0.1 + i * 0.07, duration: 0.5, ease: [0.22, 1, 0.36, 1] })
+  const stagger = (i: number) => ({
+    delay: 0.1 + i * 0.07,
+    duration: 0.5,
+    ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
+  })
 
   return (
     <AnimatePresence>
