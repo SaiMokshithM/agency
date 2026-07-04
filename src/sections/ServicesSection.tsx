@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Bot, Code2, Layers, Zap, Palette, ArrowRight } from 'lucide-react'
 import ScrollReveal from '@/components/ScrollReveal'
+import ServiceModal from '@/components/ServiceModal'
+import type { ServiceDetail } from '@/components/ServiceModal'
 
 /* ── Marquee ── */
 const MARQUEE_ITEMS = ['Web Development', 'AI Automation', 'SaaS Platforms', 'Product Design', 'API Integration', 'Performance Optimisation', 'Logo & Poster Design']
@@ -35,18 +37,113 @@ const MarqueeStrip: React.FC = () => {
   )
 }
 
-
-
-/* ── Service card data ── */
-const services = [
-  { id:'ai',     icon: Bot,    title: 'AI Development',       desc: 'Custom AI solutions, LLM integrations and intelligent automation systems.',                        img: '/service_ai_bg.png'     },
-  { id:'web',    icon: Code2,  title: 'Web Development',      desc: 'High-performance websites and web applications built with modern technologies.',                    img: '/service_web_bg.png'    },
-  { id:'saas',   icon: Layers, title: 'SaaS Development',     desc: 'Scalable SaaS platforms that are secure, reliable and built for growth.',                          img: '/service_saas_bg.png'   },
-  { id:'auto',   icon: Zap,    title: 'Automation Systems',   desc: 'Workflow automation, API integrations and custom business solutions.',                              img: '/service_auto_bg.png'   },
-  { id:'design', icon: Palette,title: 'Logo & Poster Design', desc: 'Distinctive brand identities and stunning visual designs — logos, posters and marketing collateral that make your brand unforgettable.', img: '/service_design_bg.png' },
+/* ── Full service detail data ── */
+const services: ServiceDetail[] = [
+  {
+    id: 'ai',
+    icon: Bot,
+    title: 'AI Development',
+    desc: 'Custom AI solutions, LLM integrations and intelligent automation systems.',
+    img: '/service_ai_bg.png',
+    tagline: 'We build intelligent systems that think, learn, and act — giving your business an unfair competitive advantage through AI.',
+    what: 'From custom large language model (LLM) integrations to full AI-powered pipelines, we design and engineer AI systems tailored to your exact business workflow. No off-the-shelf tools — everything is purpose-built for maximum ROI.',
+    deliverables: [
+      'Custom LLM integrations (OpenAI, Claude, Gemini)',
+      'AI-powered chatbots & virtual assistants',
+      'Intelligent document processing & summarization',
+      'Recommendation engines & predictive analytics',
+      'RAG (Retrieval-Augmented Generation) systems',
+      'AI API design, deployment & monitoring',
+    ],
+    stack: ['OpenAI', 'LangChain', 'Python', 'FastAPI', 'Pinecone', 'Supabase', 'Vercel AI SDK'],
+    highlight: 'Businesses using our AI systems report 40–70% reduction in manual processing time within the first 60 days.',
+    stat: { value: '70%', label: 'Time Saved' },
+  },
+  {
+    id: 'web',
+    icon: Code2,
+    title: 'Web Development',
+    desc: 'High-performance websites and web applications built with modern technologies.',
+    img: '/service_web_bg.png',
+    tagline: 'We craft blazing-fast, conversion-optimised websites and web apps that don\'t just look stunning — they perform.',
+    what: 'Our web development goes beyond templates. We architect scalable, SEO-ready, pixel-perfect digital experiences — from landing pages to complex multi-page applications — all built with the latest modern stack and optimised for speed, performance, and growth.',
+    deliverables: [
+      'Custom responsive website design & development',
+      'React / Next.js web applications',
+      'SEO-optimised structure & Core Web Vitals tuning',
+      'CMS integration (Sanity, Contentful, Strapi)',
+      'Performance audits & speed optimisation',
+      'Ongoing maintenance & feature development',
+    ],
+    stack: ['React', 'Next.js', 'TypeScript', 'Vite', 'Tailwind CSS', 'Framer Motion', 'Vercel'],
+    highlight: 'Every site we ship scores 90+ on Google PageSpeed — because speed is conversion.',
+    stat: { value: '90+', label: 'PageSpeed Score' },
+  },
+  {
+    id: 'saas',
+    icon: Layers,
+    title: 'SaaS Development',
+    desc: 'Scalable SaaS platforms that are secure, reliable and built for growth.',
+    img: '/service_saas_bg.png',
+    tagline: 'We build full-stack SaaS products from zero — authentication, billing, dashboards, and everything in between.',
+    what: 'Turning your SaaS idea into a market-ready product requires deep engineering expertise. We handle every layer — from database architecture and auth systems to subscription billing, admin dashboards, and API design — so you can focus on growth.',
+    deliverables: [
+      'Full-stack SaaS product architecture & build',
+      'Auth systems (Clerk, NextAuth, Supabase Auth)',
+      'Stripe billing, subscriptions & webhook handling',
+      'Multi-tenant database design',
+      'Admin dashboards & analytics panels',
+      'API design, documentation & rate limiting',
+    ],
+    stack: ['Next.js', 'Supabase', 'PostgreSQL', 'Stripe', 'Clerk', 'Prisma', 'Railway'],
+    highlight: 'We\'ve helped founders go from idea to launched SaaS in under 8 weeks — fully production-ready.',
+    stat: { value: '8wk', label: 'Avg. Launch Time' },
+  },
+  {
+    id: 'auto',
+    icon: Zap,
+    title: 'Automation Systems',
+    desc: 'Workflow automation, API integrations and custom business solutions.',
+    img: '/service_auto_bg.png',
+    tagline: 'We eliminate repetitive work by building intelligent automations that run your business processes 24/7 — without you lifting a finger.',
+    what: 'Whether it\'s connecting your CRM to your email platform, auto-generating reports, scraping data, or building end-to-end workflow bots — we design and deploy custom automation systems that save your team hundreds of hours every month.',
+    deliverables: [
+      'End-to-end workflow automation design & build',
+      'API integrations between any platforms',
+      'Web scraping & data pipeline automation',
+      'Zapier / Make alternatives — fully custom',
+      'Automated reporting & notification systems',
+      'CRM, Slack, email & calendar integrations',
+    ],
+    stack: ['Python', 'Node.js', 'Make', 'n8n', 'Playwright', 'REST APIs', 'Webhooks'],
+    highlight: 'Our automations typically save clients 20–50 hours of manual work per week — every single week.',
+    stat: { value: '50hr', label: 'Weekly Saved' },
+  },
+  {
+    id: 'design',
+    icon: Palette,
+    title: 'Logo & Poster Design',
+    desc: 'Distinctive brand identities and stunning visual designs that make your brand unforgettable.',
+    img: '/service_design_bg.png',
+    tagline: 'Your brand\'s first impression is everything. We create premium visual identities that command attention and build instant trust.',
+    what: 'Great design is a business asset. Our designers craft logos, brand systems, and marketing collateral that are strategically aligned with your brand values — ensuring you stand out in any market, on any medium.',
+    deliverables: [
+      'Primary logo design + alternate variations',
+      'Full brand identity system & style guide',
+      'Business cards, letterheads & stationery',
+      'Social media banners & post templates',
+      'Marketing posters & print-ready designs',
+      'Pitch deck & presentation design',
+    ],
+    stack: ['Figma', 'Adobe Illustrator', 'Adobe Photoshop', 'Adobe InDesign', 'Canva Pro'],
+    highlight: 'A strong brand identity increases perceived value by up to 23× — we make sure yours delivers.',
+    stat: { value: '23×', label: 'Brand Value Lift' },
+  },
 ]
 
 const ServicesSection: React.FC = () => {
+  const [activeService, setActiveService] = useState<ServiceDetail | null>(null)
+
   const scrollContact = () =>
     document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
 
@@ -165,9 +262,9 @@ const ServicesSection: React.FC = () => {
                         {s.desc}
                       </p>
 
-                      {/* Learn more */}
+                      {/* Learn more — now opens modal */}
                       <button
-                        onClick={scrollContact}
+                        onClick={() => setActiveService(s)}
                         style={{
                           display: 'flex', alignItems: 'center', gap: 6,
                           fontFamily: 'Inter, sans-serif', fontSize: '11px', fontWeight: 600,
@@ -186,6 +283,9 @@ const ServicesSection: React.FC = () => {
           </div>
         </div>
       </section>
+
+      {/* Premium Service Detail Modal */}
+      <ServiceModal service={activeService} onClose={() => setActiveService(null)} />
     </>
   )
 }

@@ -786,6 +786,44 @@ section {
   color: #5BB8D4 !important;
 }
 
+/* ── New mobile menu v2 ── */
+.mobile-nav-link-v2 {
+  color: #E8E2DC;
+}
+@media (hover: hover) {
+  .mobile-nav-link-v2:hover {
+    color: #3E8FA8 !important;
+  }
+  .mobile-nav-link-v2:hover .mobile-arrow-v2 {
+    transform: translateX(5px) !important;
+    opacity: 1 !important;
+  }
+}
+.mobile-nav-link-v2:active {
+  color: #5BB8D4 !important;
+}
+
+.mobile-service-item:hover {
+  background: rgba(62,143,168,0.10) !important;
+  border-color: rgba(62,143,168,0.25) !important;
+}
+.mobile-service-item:active {
+  background: rgba(62,143,168,0.15) !important;
+}
+
+.mobile-close-btn:hover {
+  background: rgba(255,255,255,0.1) !important;
+}
+
+.mobile-btn-outline:hover {
+  border-color: rgba(240,234,228,0.35) !important;
+  color: #fff !important;
+}
+.mobile-btn-primary:hover {
+  opacity: 0.88 !important;
+  box-shadow: 0 6px 32px rgba(62,143,168,0.35) !important;
+}
+
 /* ── Footer nav button responsive hover ── */
 .footer-nav-btn {
   color: #8a8a8a;
@@ -1217,6 +1255,14 @@ section {
   .about-faq-trigger { padding: 18px 20px; }
   .about-faq-q       { font-size: 14px; }
   .about-faq-a       { padding: 0 20px 18px; font-size: 13px; }
+}
+
+/* ──────────────────────────────────────────
+   SERVICE MODAL
+────────────────────────────────────────── */
+.service-modal-cta:hover {
+  opacity: 0.88 !important;
+  box-shadow: 0 12px 40px rgba(62,143,168,0.4) !important;
 }
 
 /* ──────────────────────────────────────────
