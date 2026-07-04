@@ -104,7 +104,7 @@ const Navbar: React.FC = () => {
               position: 'fixed',
               top: 0, left: 0, right: 0,
               zIndex: 40,
-              background: '#111214',
+              background: '#090909',
               display: 'flex', flexDirection: 'column',
               overflowY: 'auto',
               maxHeight: '92vh',
